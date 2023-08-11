@@ -11,3 +11,4 @@ public class MjIslandApplication {
 	}
 
 }
+//test oohama
