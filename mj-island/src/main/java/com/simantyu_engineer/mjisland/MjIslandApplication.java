@@ -9,5 +9,5 @@ public class MjIslandApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(MjIslandApplication.class, args);
 	}
-
+//test oohama
 }
