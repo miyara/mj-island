@@ -1,7 +1,8 @@
 function header() {
     // setRequestHeader("Access-Control-Allow-Origin", "http://localhost:8080");
     $.ajax({
-        url: "SCP-003.html",
+        //url: "../../templates/common/SCP003_header.html",
+        url: "./common/SCP003_header.html",
         cache: false,
         success: function (html) {
             document.write(html);
