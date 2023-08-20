@@ -16,17 +16,12 @@
     
     
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-    <script>
-        $(function(){
-            $("#header").load("./common/SCP003header.html");
-        });
-    </script>
 </head>
 
 <body class="body_template">
     
         <!-- 定義したヘッダーを表示-->
-        <div th:id="header"></div>
+        <div th:replace="/common/SCP003header::header"></div>
     
     <a th:href="@{/#}"><img src="/material/return_button.jpg" alt="戻る" class="return_button"></a>
 
