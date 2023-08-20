@@ -7,10 +7,14 @@ nav a {
 	align-items: center;
 }
 
-img[name = "pasou"] {
+/* img[name = "pasou"] {
 	width: 40px;
 	height: 58px;
 	display: inline;
+} */
+.pasou {
+    width: 50px;
+    height: 50px;
 }
 
 .title {
