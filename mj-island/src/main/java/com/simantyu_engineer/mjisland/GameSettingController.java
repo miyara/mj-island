@@ -18,13 +18,13 @@ public class GameSettingController {
     
     @GetMapping("/GameSetting")
     private String readForm() {
-        return "/common/SCR004";
+        return "/SCR004";
     }
 
     @PostMapping("/GameSetting")
     private String confirm(@ModelAttribute GameSettingObject gameSettingObject) {
         
-        return "/common/SCR004";
+        return "/SCR004";
     }
 }
 // http://localhost:8765/GameSetting
