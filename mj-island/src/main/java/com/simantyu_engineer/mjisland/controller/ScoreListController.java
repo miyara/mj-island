@@ -24,7 +24,7 @@ public class ScoreListController {
         List<memberMst> memberAll =  service.findAllMemberMst();
         model.addAttribute("memberList", memberAll);
 
-        return "SCR005ScoreList";
+        return "SCR005scoreList";
     }
 
 }

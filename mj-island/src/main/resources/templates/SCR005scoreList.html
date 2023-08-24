@@ -1,92 +1,110 @@
 <!doctype html>
 <html xmlns:th="http://www.thymeleaf.org" lang="ja">
 
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <title>スコア一覧</title>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>スコア一覧</title>
 
-        <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
-        <link th:href="@{/css/template.css}" rel="stylesheet">
-        <link rel="stylesheet" th:href="@{/css/scr003.css}" />
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+    <link th:href="@{/css/template.css}" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/scr003.css}" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 
-        <!-- マルチセレクト用js/css-->
-        <script src="https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script>
-        <!-- Latest compiled and minified JavaScript -->
-        <script src="https://unpkg.com/multiple-select@1.5.2/dist/multiple-select.min.js"></script>
-        <!-- Latest compiled and minified CSS -->
-        <link rel="stylesheet" href="https://unpkg.com/multiple-select@1.5.2/dist/multiple-select.min.css">
+    <!-- マルチセレクト用js/css-->
+    <script src="https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script>
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://unpkg.com/multiple-select@1.5.2/dist/multiple-select.min.js"></script>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/multiple-select@1.5.2/dist/multiple-select.min.css">
 
 
-        <!-- ヘッダーの書き方１
+    <!-- ヘッダーの書き方１
         <script src="../static/js/header.js"></script>
         -->
-        <!-- ヘッダーの書き方２　こっちを採用！！-->
-        <!-- <script>
+    <!-- ヘッダーの書き方２　こっちを採用！！-->
+    <!-- <script>
             $(function () {
                 $("#header").load("./common/SCP003header.html");
             });
         </script> -->
-    </head>
+</head>
 
-    <body>
-        <!-- 定義したヘッダーを表示-->
-        <!-- <div id="header"></div> -->
-        <div th:replace="common/SCP003header::header"></div>
+<body>
+    <!-- 定義したヘッダーを表示-->
+    <!-- <div id="header"></div> -->
+    <div th:replace="~{common/SCP003header::header}"></div>
 
-        <!-- フィルター部分-->
-        <div class="container" id="filter">
-            <div class="row">
-                <div class="col-5" id="filter-return">
-                    <input type="image" th:src="@{/material/return_button.jpg}" alt="戻る" name="return" width="20px"
-                        hight="20px">
-                </div>
+    <!-- フィルター部分-->
+    <div class="container" id="filter">
+        <div class="row">
+            <div class="col-5" id="filter-return">
+                <input type="image" th:src="@{/material/return_button.jpg}" alt="戻る" name="return" width="20px"
+                    hight="20px">
+            </div>
 
-                <div class="col-1" id="filter-favo">
-                    <p><button type="button" class="favoButton" value="1">★</button></p>
-                </div>
+            <div class="col-1" id="filter-favo">
+                <p><button type="button" class="favoButton" value="1">★</button></p>
+            </div>
 
-                <div class="col">
-                    <!-- 参考：https://qiita.com/yoyoyo_pg/items/4859dfbbc512ef653828-->
-                    <select id="playerList" multiple="multiple" style="width:200px;">
-                        <option value="1">1月</option>
-                        <option value="2">2月</option>
-                        <option value="3">3月</option>
-                        <option value="4">4月</option>
-                        <option value="5">5月</option>
-                        <option value="6">6月</option>
-                        <option value="7">7月</option>
-                        <option value="8">8月</option>
-                    </select>
-                </div>
+            <div class="col">
+                <!-- 参考：https://qiita.com/yoyoyo_pg/items/4859dfbbc512ef653828-->
+                <select id="playerList" multiple="multiple" style="width:200px;">
+                    <option value="1">1月</option>
+                    <option value="2">2月</option>
+                    <option value="3">3月</option>
+                    <option value="4">4月</option>
+                    <option value="5">5月</option>
+                    <option value="6">6月</option>
+                    <option value="7">7月</option>
+                    <option value="8">8月</option>
+                </select>
+            </div>
 
-                <div class="col" id="filter-eventDateFrom">
-                    <label for="eventDateFrom">開催日From</label><br>
-                    <input type="date" name="eventDateFrom" id="eventDateFrom">
-                </div>
-                <div class="col" id="filter-eventDateTo">
-                        <label for="eventDateTo">開催日To</label><br>
-                    <input type="date" name="eventDateTo" id="eventDateTo">
-                </div>
+            <div class="col" id="filter-eventDateFrom">
+                <label for="eventDateFrom">開催日From</label><br>
+                <input type="date" name="eventDateFrom" id="eventDateFrom">
+            </div>
+            <div class="col" id="filter-eventDateTo">
+                <label for="eventDateTo">開催日To</label><br>
+                <input type="date" name="eventDateTo" id="eventDateTo">
             </div>
         </div>
 
-        <script>
-            $(function () {
-                $('select').multipleSelect({
-                    width: 200,
-                    formatSelectAll: function () {
-                        return 'Select All';
-                    },
-                    formatAllSelected: function () {
-                        return 'Selected All';
-                    }
-                });
+        <div class="row">
+            <div class="col">
+                <span th:text="${hello}">aaaa</span>
+            </div>
+            <div calss="col">
+                <table>
+                    <tr th:each="data : ${memberList}" th:object="${data}">
+                        <td th:text="*{member_id}"></td>
+                        <td th:text="*{member_mail_address}"></td>
+                        <td th:text="*{memeber_password}"></td>
+                        <td th:text="*{del_flg}"></td>
+                        <td th:text="*{create_user}"></td>
+                        <td th:text="*{create_datetime}"></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        $(function () {
+            $('select').multipleSelect({
+                width: 200,
+                formatSelectAll: function () {
+                    return 'Select All';
+                },
+                formatAllSelected: function () {
+                    return 'Selected All';
+                }
             });
-        </script>
+        });
+    </script>
 
 
 
-    </body>
+</body>
 </htmml>
