@@ -1,7 +1,6 @@
 package com.simantyu_engineer.mjisland.controller;
 
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,7 +13,7 @@ import com.simantyu_engineer.mjisland.service.ScoreListService;
 @Controller
 public class ScoreListController {
     @Autowired
-    private ScoreListController controller;
+    private ScoreListService service;
 
     @RequestMapping("/ScoreList")
     public String SCR005ScoreList(Model model) {
@@ -22,7 +21,7 @@ public class ScoreListController {
         model.addAttribute("hello", "Hello World!!");
 
         //会員マスタの取得
-        List<memberMst> memberAll =  ScoreListService.findAllMemberMst();
+        List<memberMst> memberAll =  service.findAllMemberMst();
         model.addAttribute("memberList", memberAll);
 
         return "SCR005ScoreList";

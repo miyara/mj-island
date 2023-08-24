@@ -6,5 +6,5 @@ import org.springframework.stereotype.Repository;
 import com.simantyu_engineer.mjisland.domain.model.memberMst;
 
 @Repository
-public class ScoreListRepository extends JpaRepository<memberMst, String>{
+public interface ScoreListRepository extends JpaRepository<memberMst, String>{
 }
