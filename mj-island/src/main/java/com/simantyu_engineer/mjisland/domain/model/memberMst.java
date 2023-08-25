@@ -4,13 +4,17 @@ import com.google.appengine.repackaged.org.joda.time.LocalDateTime;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.Data;
+//import jakarta.persistence.MappedSuperclass;
 
+//@MappedSuperclass
 @Data
 @Entity
 @Table(name = "member_mst")
-public class member_mst {
+public class memberMst {
+    @Id
     @Column(name = "member_id")
     private String member_id;
 
