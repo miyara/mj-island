@@ -10,12 +10,12 @@ public class GameSettingExecution {
     final Date    EVENTDATE_DEFAULT_VALUE = new Date(); //開催日の初期値（システム日付）
     
     // SCR004.htmlに表記する初期値を入力
-    public GameSettingObject initialSetting() {
-        GameSettingObject obj = new GameSettingObject();
-        obj.setRating(RATING_DEFAULT_VALUE);
-        obj.setChip(CHIP_DEFAULT_VALUE);
-        obj.setEventDate(EVENTDATE_DEFAULT_VALUE);
-        return obj;
+    public GameSettingForm initialSetting() {
+        GameSettingForm gsf = new GameSettingForm();
+        gsf.setRating(RATING_DEFAULT_VALUE);
+        gsf.setChip(CHIP_DEFAULT_VALUE);
+        gsf.setEventDate(EVENTDATE_DEFAULT_VALUE);
+        return gsf;
     }
 
     // //システム日付を取得後、String型に変換
