@@ -4,8 +4,9 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.servlet.ModelAndView;
+// import org.springframework.web.servlet.ModelAndView;
 // import org.springframework.ui.Model;
 
 import com.simantyu_engineer.mjisland.domain.model.memberMst;
@@ -17,25 +18,17 @@ public class ScoreListController {
     private ScoreListService service;
 
     @RequestMapping("/ScoreList")
-    // public String SCR005ScoreList(Model model) {
-    public ModelAndView SCR005ScoreList(ModelAndView mav) {
+    public String SCR005ScoreList(Model model) {
         //お試し行を追加
         String str = "morning!!";
-        // mav.addAttribute("hello", "HelloWorld");
-        // mav.addAttribute("morning", str);
-        mav.addObject("hello", "HelloWorld");
-        mav.addObject("morning", str);
+        model.addAttribute("hello", "HelloWorld");
+        model.addAttribute("morning", str);
 
         //会員マスタの取得
-        // List<memberMst> memberAll =  service.findAllMemberMst();
-        // mav.addObject("memberList", memberAll);
-
-        mav.setViewName("SCR005scoreList");
-
-        return mav;
-
-        // mav.addAttribute("memberList", memberAll);
-        // return "SCR005scoreList";
+        List<memberMst> memberAll =  service.findAllMemberMst();
+        model.addAttribute("memberList", memberAll);
+        
+        return "SCR005scoreList";
 
     }
 
