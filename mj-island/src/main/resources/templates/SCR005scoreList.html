@@ -79,18 +79,20 @@
                 <p>[[${hello}]]</p>
                 <span th:text="${morning}"></span>
             </div>
-            <!-- <div calss="col">
+            <div class="col">
                 <table>
-                    <tr th:each="data : ${memberList}" th:object="${data}">
-                        <td th:text="{member_id}"></td>
-                        <td th:text="*{member_mail_address}"></td>
-                        <td th:text="*{memeber_password}"></td>
-                        <td th:text="*{del_flg}"></td>
-                        <td th:text="*{create_user}"></td>
-                        <td th:text="*{create_datetime}"></td>
+                    <tr th:each="item : ${memberList}">
+                        <td th:text="*{item.member_id}"></td>
+                        <td th:text="*{item.member_mail_address}"></td>
+                        <td th:text="*{item.member_password}"></td>
+                        <td th:text="*{item.del_flg}"></td>
+                        <td th:text="*{item.create_user}"></td>
+                        <td th:text="*{item.create_datetime}"></td>
+                        <td th:text="*{item.update_user}"></td>
+                        <td th:text="*{item.update_datetime}"></td>
                     </tr>
                 </table>
-            </div> -->
+            </div>
         </div>
     </div>
 
