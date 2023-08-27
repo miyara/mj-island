@@ -1,5 +1,5 @@
 <!doctype html>
-<html xmlns:th="http://www.thymeleaf.org" lang="ja">
+<html xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="utf-8">
@@ -73,12 +73,16 @@
 
         <div class="row">
             <div class="col">
-                <span th:text="${hello}">aaaa</span>
+                <span class="helloContext" th:text="${hello}"></span>
+                <span th:text="*{hello}"></span>
+                <p th:text="${hello}"></p>
+                <p>[[${hello}]]</p>
+                <span th:text="${morning}"></span>
             </div>
-            <div calss="col">
+            <!-- <div calss="col">
                 <table>
                     <tr th:each="data : ${memberList}" th:object="${data}">
-                        <td th:text="*{member_id}"></td>
+                        <td th:text="{member_id}"></td>
                         <td th:text="*{member_mail_address}"></td>
                         <td th:text="*{memeber_password}"></td>
                         <td th:text="*{del_flg}"></td>
@@ -86,7 +90,7 @@
                         <td th:text="*{create_datetime}"></td>
                     </tr>
                 </table>
-            </div>
+            </div> -->
         </div>
     </div>
 
@@ -107,4 +111,4 @@
 
 
 </body>
-</htmml>
+</html>
