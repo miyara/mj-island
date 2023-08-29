@@ -1,4 +1,4 @@
-package com.simantyu_engineer.mjisland;
+package com.simantyu_engineer.mjisland.domain.model;
 
 import java.util.Date;
 

@@ -1,12 +1,17 @@
-package com.simantyu_engineer.mjisland;
+package com.simantyu_engineer.mjisland.controller;
 
-// import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+
+import com.simantyu_engineer.mjisland.domain.model.GameSettingEntity;
+import com.simantyu_engineer.mjisland.domain.model.GameSettingExecution;
+import com.simantyu_engineer.mjisland.domain.model.GameSettingForm;
+import com.simantyu_engineer.mjisland.repository.GameSettingRepository;
 
 @Controller
 public class GameSettingController {
@@ -19,22 +24,20 @@ public class GameSettingController {
     }
 
     //トップページから遷移した時のみ初期値を設定
-    @ModelAttribute
-    public GameSettingForm setup() {
         GameSettingExecution gse = new GameSettingExecution();
         GameSettingForm form = gse.initialSetting();
-        return form;
-    }
+
 
     @GetMapping("/GameSetting")
-    private String readForm() {
+    private String readForm(Model model) {
+        model.addAttribute("form", form);
         return "SCR004";
     }
 
     @PostMapping("/GameSetting")
     private String confirm(@Validated @ModelAttribute GameSettingEntity entity, BindingResult result) {
         if (result.hasErrors()) {
-            return "SCR004";
+            return "SCR001login";
         }
         // COMMENTテーブル：コメント登録
         repository.save(entity);
