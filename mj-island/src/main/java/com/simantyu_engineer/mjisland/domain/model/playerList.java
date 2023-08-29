@@ -27,6 +27,9 @@ public class playerList {
     @Column(name="commnet")
     private String comment;
 
+    @Column(name="create_member_id")
+    private String create_member_id;
+
     @Column(name="create_user")
     private String create_user;
 
