@@ -18,7 +18,7 @@ public class ScoreListService {
     /**
      * レコードを全件取得
      */
-    // public List<memberMst> findAllMemberMst(){
-    //     return repository.findAll();
-    // }
+    public List<memberMst> findAllMemberMst(){
+        return repository.findAll();
+    }
 }

@@ -30,7 +30,7 @@ public class GameSettingController {
 
     @GetMapping("/GameSetting")
     private String readForm(Model model) {
-        model.addAttribute("form", form);
+        model.addAttribute("form", new GameSettingEntity());
         return "SCR004";
     }
 
