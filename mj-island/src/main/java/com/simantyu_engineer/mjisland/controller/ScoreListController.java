@@ -25,8 +25,8 @@ public class ScoreListController {
         model.addAttribute("morning", str);
 
         //会員マスタの取得
-        List<memberMst> memberAll =  service.findAllMemberMst();
-        model.addAttribute("memberList", memberAll);
+        // List<memberMst> memberAll =  service.findAllMemberMst();
+        // model.addAttribute("memberList", memberAll);
         
         return "SCR005scoreList";
 
