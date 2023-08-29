@@ -2,6 +2,7 @@ package com.simantyu_engineer.mjisland.domain.model;
 
 import java.util.Date;
 
+//初期値を設定するためのクラス
 public class GameSettingExecution {
 
     // SCR004.htmlに表記する初期値を設定
