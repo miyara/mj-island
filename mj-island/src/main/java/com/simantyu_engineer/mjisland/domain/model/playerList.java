@@ -1,6 +1,6 @@
 package com.simantyu_engineer.mjisland.domain.model;
 
-import com.google.appengine.repackaged.org.joda.time.LocalDateTime;
+import java.time.LocalDateTime;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -24,7 +24,7 @@ public class playerList {
     @Column(name="player_name")
     private String player_name;
 
-    @Column(name="commnet")
+    @Column(name="comment")
     private String comment;
 
     @Column(name="create_member_id")

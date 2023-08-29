@@ -49,15 +49,19 @@
 
             <div class="col">
                 <!-- 参考：https://qiita.com/yoyoyo_pg/items/4859dfbbc512ef653828-->
-                <select id="playerList" multiple="multiple" style="width:200px;">
-                    <option value="1">1月</option>
-                    <option value="2">2月</option>
-                    <option value="3">3月</option>
+                <!-- <select id="playerList" multiple="multiple" style="width:200px;"> -->
+                <select>
+                    <option value="null">===プレイヤーを選択===</option>
+                    <option th:each="item : ${playerList}"
+                            th:value="${item.player_id}"
+                            th:text="${item.player_name}">
+                        </option>
+                    <!-- <option value="3">3月</option>
                     <option value="4">4月</option>
                     <option value="5">5月</option>
                     <option value="6">6月</option>
                     <option value="7">7月</option>
-                    <option value="8">8月</option>
+                    <option value="8">8月</option> -->
                 </select>
             </div>
 
@@ -72,13 +76,6 @@
         </div>
 
         <div class="row">
-            <div class="col">
-                <span class="helloContext" th:text="${hello}"></span>
-                <span th:text="*{hello}"></span>
-                <p th:text="${hello}"></p>
-                <p>[[${hello}]]</p>
-                <span th:text="${morning}"></span>
-            </div>
             <div class="col">
                 <table>
                     <tr th:each="item : ${memberList}">

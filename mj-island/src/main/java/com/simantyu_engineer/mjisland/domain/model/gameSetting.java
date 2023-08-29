@@ -1,6 +1,9 @@
 package com.simantyu_engineer.mjisland.domain.model;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
+
+import com.google.appengine.repackaged.com.google.type.Date;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -12,21 +15,37 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "member_mst")
-public class memberMst {
+@Table(name="game_setting")
+public class gameSetting {
+
     @Id
-    @Column(name = "member_id")
-    private String member_id;
+    @Column(name="score_id")
+    private String score_id;
 
-    @Column(name = "member_mail_address")
-    private String member_mail_address;
+    @Column(name="rating")
+    private BigDecimal rating;
 
-    @Column(name = "member_password")
-    private String member_password;
+    @Column(name="chip_rating")
+    private Integer chip_rating;
 
-    @Column(name = "del_flg")
-    private String del_flg;
+    @Column(name="group_id")
+    private String group_id;
 
+    @Column(name="score_title")
+    private String score_title;
+
+    @Column(name="event_date")
+    private Date event_date;
+
+    @Column(name="location")
+    private String location;
+
+    @Column(name="comment")
+    private String comment;
+
+    @Column(name="score_last_num")
+    private Integer score_last_num;
+    
     @Column(name = "create_user")
     private String create_user;
 
@@ -40,4 +59,5 @@ public class memberMst {
     @Column(name = "update_datetime")
     @Temporal(TemporalType.TIMESTAMP)
     private LocalDateTime update_datetime;
+    
 }
