@@ -9,23 +9,23 @@
     <script th:src="@{/js/template.js}"></script>
     <link th:href="@{/css/sanitize.css}" rel="stylesheet" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+        integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
     <link th:href="@{/css/template.css}" rel="stylesheet" />
     <link th:href="@{/css/scr003.css}" rel="stylesheet" />
-    <link th:href="@{/css/scr004.css}" rel="stylesheet" />
-    
-    
+    <link th:href="@{/css/scr004.css}" rel="stylesheet" /> 
+
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 </head>
 
 <body class="body_template">
-    
-        <!-- 定義したヘッダーを表示-->
-        <div th:replace="common/SCP003header::header"></div>
-    
+
+    <!-- 定義したヘッダーを表示-->
+    <div th:replace="common/SCP003header::header"></div> 
+
     <a th:href="@{/#}"><img src="/material/return_button.jpg" alt="戻る" class="return_button"></a>
 
-    <form th:action="@{/GameSetting}" th:object="${GameSettingForm}" method="post">
+    <form th:action="@{/GameSetting}" th:object="${form}" method="post">
         <ul class="list-group mg-top-50px">
             <li class="list-group-item mj-list">
                 <img src="/material/pictogram_human.jpg">
@@ -34,7 +34,7 @@
                     @＊人選択中
                 </div>
                 <!-- url未設定！ -->
-                <a herf="#">
+                <a href="#">
                     <img src="/material/right_button.jpg" class="right_padding">
                 </a>
             </li>
@@ -45,7 +45,7 @@
                     グループ名
                 </div>
                 <!-- url未設定！ -->
-                <a herf="#">
+                <a href="#">
                     <img src="/material/right_button.jpg" class="right_padding">
                 </a>
             </li>
@@ -68,7 +68,8 @@
             <li class="list-group-item mj-list">
                 <img src="/material/trophy.jpg">
                 <div class="text_item">タイトル</div>
-                <input class="form-control list_text" type="text" aria-label="default input example" th:field="*{scoreTitle}">
+                <input class="form-control list_text" type="text" aria-label="default input example"
+                    th:field="*{scoreTitle}">
             </li>
             <li class="list-group-item mj-list">
                 <img src="/material/calendar.jpg">
@@ -77,16 +78,18 @@
             </li>
             <li class="list-group-item mj-list">
                 <img src="/material/map.jpg">
-                <div class="text_item">場所</div>   
-                <input class="form-control list_text" type="text" aria-label="default input example" th:field="*{location}">
+                <div class="text_item">場所</div>
+                <input class="form-control list_text" type="text" aria-label="default input example"
+                    th:field="*{location}">
             </li>
             <li class="list-group-item mj-list">
                 <img src="/material/pen.jpg">
                 <div class="text_item">メモ</div>
-                <input class="form-control list_memo" type="text" aria-label="default input example" th:field="*{comment}">
+                <input class="form-control list_memo" type="text" aria-label="default input example"
+                    th:field="*{comment}">
             </li>
         </ul>
-        
+
         <div class="mg-top-50px text_center">
             <button class="btn btn-primary">送信</button>
         </div>
@@ -98,9 +101,9 @@
         <input type="hidden" th:field="*{createDatetime}">
         <input type="hidden" th:field="*{updateUser}">
         <input type="hidden" th:field="*{updateDatetime}">
-        
+
     </form>
-    
+
     <div class="mg-top-50px"></div>
 </body>
 

@@ -1,4 +1,4 @@
-package com.simantyu_engineer.mjisland;
+package com.simantyu_engineer.mjisland.service;
 
 import org.springframework.stereotype.Service;
 
