@@ -9,9 +9,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.simantyu_engineer.mjisland.domain.model.GameSettingEntity;
-import com.simantyu_engineer.mjisland.domain.model.GameSettingExecution;
 import com.simantyu_engineer.mjisland.domain.model.GameSettingForm;
 import com.simantyu_engineer.mjisland.repository.GameSettingRepository;
+import com.simantyu_engineer.mjisland.service.GameSettingService;
 
 @Controller
 public class GameSettingController {
@@ -24,13 +24,13 @@ public class GameSettingController {
     }
 
     //トップページから遷移した時のみ初期値を設定
-        GameSettingExecution gse = new GameSettingExecution();
-        GameSettingForm form = gse.initialSetting();
+        GameSettingService service = new GameSettingService();
+        GameSettingForm form = service.initialSetting();
 
 
     @GetMapping("/GameSetting")
     private String readForm(Model model) {
-        model.addAttribute("form", new GameSettingEntity());
+        model.addAttribute("form", form);
         return "SCR004";
     }
 
