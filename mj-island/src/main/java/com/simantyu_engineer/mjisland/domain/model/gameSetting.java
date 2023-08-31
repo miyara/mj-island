@@ -4,8 +4,6 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.Date;
 
-// import com.google.appengine.repackaged.com.google.type.Date;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -48,7 +46,7 @@ public class gameSetting {
     private Integer score_last_num;
     
     @Column(name="favorite_flg")
-    private char favorite_flg;
+    private String favorite_flg;
 
     @Column(name = "create_user")
     private String create_user;

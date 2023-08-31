@@ -29,7 +29,7 @@ public class GameSettingForm {
 
     private Integer score_last_num;
     
-    private char    favorite_flg;
+    private String favorite_flg;
 
     private String  create_user;
 
@@ -67,7 +67,7 @@ public class GameSettingForm {
         form.setLocation("世持家");
         form.setComment("commnetcommnetcommnetcommnetcommnetcommnet");
         form.setScore_last_num(100000);
-        form.setFavorite_flg('t');
+        form.setFavorite_flg("t");
         form.setCreate_user("大濵");
         form.setCreate_datetime(LocalDateTime.now());
         form.setUpdate_user("宮良");

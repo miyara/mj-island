@@ -56,12 +56,6 @@
                             th:value="${item.player_id}"
                             th:text="${item.player_name}">
                         </option>
-                    <!-- <option value="3">3月</option>
-                    <option value="4">4月</option>
-                    <option value="5">5月</option>
-                    <option value="6">6月</option>
-                    <option value="7">7月</option>
-                    <option value="8">8月</option> -->
                 </select>
             </div>
 
@@ -75,7 +69,7 @@
             </div>
         </div>
 
-        <div class="row">
+        <!-- <div class="row">
             <div class="col">
                 <table>
                     <tr th:each="item : ${memberList}">
@@ -90,7 +84,36 @@
                     </tr>
                 </table>
             </div>
-        </div>
+        </div> -->
+        <br><br>
+        <!-- <ul class="list-group"  th:each="item : ${scoreList}">
+            <li class="list-group-item flex">
+                <input type="hidden" name="scoreId" th:value="${item.score_id}"> 
+                <img th:if="${item.favorite_flg == '1'}" th:src="@{/material/star.png}" class="star mg-15px">
+                <img th:unless="${item.favorite_flg == '1'}" class="star mg-15px">
+                <span class="wd-200px">
+                    <div><span th:text="${item.event_date}"></span></div>
+                    <div><p th:text="${item.group_id}"></p></div>
+                </span>
+                <span class="wd-200px hg-40px font-size-33px" th:text="${item.score_title}" onclick="location.href='/GameSetting'"></span>
+                <span class="resize-none wd-200px line_wrap2" th:text="${item.comment}"></span>
+            </li>
+        </ul> -->
+        <ul class="list-group"  th:each="item : ${scoreList}">
+            <li class="list-group-item flex">
+                <!-- <a th:href="@{/GameSetting/{scoreId}(scoreId=${item.score_id})}"> -->
+                <input type="hidden" name="scoreId" th:value="${item.score_id}"> 
+                <img th:if="${item.favorite_flg == '1'}" th:src="@{/material/star.png}" class="star mg-auto col-1">
+                <img th:unless="${item.favorite_flg == '1'}" class="mg-auto col-1">
+                <span class="col-3">
+                    <div><span th:text="${item.event_date}"></span></div>
+                    <div><p th:text="${item.group_id}"></p></div>
+                </span>
+                <span class="col-5 hg-40px font-size-33px" th:text="${item.score_title}" onclick="location.href='/GameSetting'"></span>
+                <span class="resize-none col-3 line_wrap2" th:text="${item.comment}"></span>
+                <!-- </a> -->
+            </li>
+        </ul>
     </div>
 
     <script>
