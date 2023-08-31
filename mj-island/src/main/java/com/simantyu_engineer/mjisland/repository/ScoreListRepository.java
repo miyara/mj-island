@@ -1,9 +1,9 @@
-package com.simantyu_engineer.mjisland.repository;
+// package com.simantyu_engineer.mjisland.repository;
 
-import org.springframework.data.jpa.repository.JpaRepository;
+// import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.simantyu_engineer.mjisland.domain.model.GameSettingEntity;
+// import com.simantyu_engineer.mjisland.domain.model.GameSettingEntity;
 
-public interface ScoreListRepository extends JpaRepository <GameSettingEntity, Long> {
+// public interface ScoreListRepository extends JpaRepository <GameSettingEntity, Long> {
 
-}
+// }

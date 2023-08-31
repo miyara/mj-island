@@ -8,29 +8,29 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import com.simantyu_engineer.mjisland.domain.model.GameSettingForm;
-import com.simantyu_engineer.mjisland.service.GameSettingService;
+import com.simantyu_engineer.mjisland.domain.model.groupList;
+import com.simantyu_engineer.mjisland.service.GroupListService;
 
 
 //遷移先未確定　注意
 @Controller
-public class GameSettingController {
+public class GroupListController {
 
-    private final GameSettingService service;
+    private final GroupListService service;
 
-    public GameSettingController(GameSettingService service) {
+    public GroupListController(GroupListService service) {
         this.service = service;
     }
 
-    @GetMapping("/GameSetting")
+    @GetMapping("/GroupList")
     private String readForm(Model model) {
-        GameSettingForm form = new GameSettingForm();
+        groupList form = new groupList();
         model.addAttribute("form", form.test());
-        return "SCR004";
+        return "SCR013";
     }
 
-    @PostMapping("/GameSetting")
-    private String confirm(@Validated @ModelAttribute GameSettingForm form, BindingResult result) {
+    @PostMapping("/GroupList")
+    private String confirm(@Validated @ModelAttribute groupList form, BindingResult result) {
         if (result.hasErrors()) {
             return "SCR001login";
         }
@@ -41,4 +41,4 @@ public class GameSettingController {
     }
 }
 
-// http://localhost:8765/GameSetting
+// http://localhost:8765/GroupList
