@@ -2,8 +2,9 @@ package com.simantyu_engineer.mjisland.domain.model;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.Date;
 
-import com.google.appengine.repackaged.com.google.type.Date;
+// import com.google.appengine.repackaged.com.google.type.Date;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -46,6 +47,9 @@ public class gameSetting {
     @Column(name="score_last_num")
     private Integer score_last_num;
     
+    @Column(name="favorite_flg")
+    private char favorite_flg;
+
     @Column(name = "create_user")
     private String create_user;
 
@@ -59,5 +63,5 @@ public class gameSetting {
     @Column(name = "update_datetime")
     @Temporal(TemporalType.TIMESTAMP)
     private LocalDateTime update_datetime;
-    
+
 }

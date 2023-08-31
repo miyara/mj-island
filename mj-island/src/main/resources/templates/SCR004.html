@@ -60,7 +60,7 @@
             <li class="list-group-item mj-list">
                 <img src="/material/chip.jpg">
                 <div class="text_item">チップ</div>
-                <input type="number" min="0" max="30" th:field="*{chip}" class="right_padding">
+                <input type="number" min="0" max="30" th:field="*{chip_rating}" class="right_padding">
             </li>
         </ul>
 
@@ -69,12 +69,12 @@
                 <img src="/material/trophy.jpg">
                 <div class="text_item">タイトル</div>
                 <input class="form-control list_text" type="text" aria-label="default input example"
-                    th:field="*{scoreTitle}">
+                    th:field="*{score_title}">
             </li>
             <li class="list-group-item mj-list">
                 <img src="/material/calendar.jpg">
                 <div class="text_item">開催日</div>
-                <input class="form-control list_text" type="date" th:field="*{eventDate}">
+                <input class="form-control list_text" type="date" th:field="*{event_date}">
             </li>
             <li class="list-group-item mj-list">
                 <img src="/material/map.jpg">
@@ -94,13 +94,14 @@
             <button class="btn btn-primary">送信</button>
         </div>
 
-        <input type="hidden" th:field="*{scoreId}">
-        <input type="hidden" th:field="*{groupId}">
-        <input type="hidden" th:field="*{scoreNumTotal}">
-        <input type="hidden" th:field="*{createUser}">
-        <input type="hidden" th:field="*{createDatetime}">
-        <input type="hidden" th:field="*{updateUser}">
-        <input type="hidden" th:field="*{updateDatetime}">
+        <input type="hidden" th:field="*{score_id}">
+        <input type="hidden" th:field="*{group_id}">
+        <input type="hidden" th:field="*{score_last_num}">
+        <input type="hidden" th:field="*{favorite_flg}">
+        <input type="hidden" th:field="*{create_user}">
+        <input type="hidden" th:field="*{create_datetime}">
+        <input type="hidden" th:field="*{update_user}">
+        <input type="hidden" th:field="*{update_datetime}">
 
     </form>
 
