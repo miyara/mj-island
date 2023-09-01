@@ -6,11 +6,19 @@ if ($windowinnerWidth <= windowSm) {
     //横幅640px超のとき（タブレット、PC）に行う処理を書く
 }
 
-function changeImage() {
-    var image = document.getElementById('ster');
-    if (image.src.match("../static/material/star.png")) {
-        image.src = "../static/material/star_empty.png";
+
+
+var imageToggleState = 1;  // 初期状態は1
+
+function toggleImage() {
+    var img = document.getElementById('toggleButton');
+    if (imageToggleState === 1) {
+        img.src = '/material/star_empty.png';
+        img.alt = 'Image 2';
+        imageToggleState = 2;
     } else {
-        image.src = "../static/material/star.png";
+        img.src = '/material/star.png';
+        img.alt = 'Image 1';
+        imageToggleState = 1;
     }
 }
