@@ -18,6 +18,10 @@
     height: 20px;
 }
 
+.error {
+    color: red;
+}
+
 .text-align-center {
     text-align: center;
 }

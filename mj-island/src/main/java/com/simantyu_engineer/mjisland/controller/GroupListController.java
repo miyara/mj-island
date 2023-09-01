@@ -8,37 +8,34 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import com.simantyu_engineer.mjisland.domain.model.groupList;
+import com.simantyu_engineer.mjisland.domain.model.GroupListForm;
 import com.simantyu_engineer.mjisland.service.GroupListService;
 
-
-//遷移先未確定　注意
 @Controller
 public class GroupListController {
 
-    private final GroupListService service;
+    private final GroupListService groupListService;
 
-    public GroupListController(GroupListService service) {
-        this.service = service;
+    public GroupListController(GroupListService groupListService) {
+        this.groupListService = groupListService;
     }
 
     @GetMapping("/GroupList")
-    private String readForm(Model model) {
-        groupList form = new groupList();
-        model.addAttribute("form", form.test());
+    public String readForm(Model model) {
+        GroupListForm groupListForm = new GroupListForm();
+        model.addAttribute("groupListForm", groupListForm.test());
         return "SCR013";
     }
 
     @PostMapping("/GroupList")
-    private String confirm(@Validated @ModelAttribute groupList form, BindingResult result) {
-        if (result.hasErrors()) {
+    public String confirm(@Validated @ModelAttribute GroupListForm groupListForm, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
             return "SCR013";
         }
 
-        service.create(form);
-        // ルートパス("/") にリダイレクトします
-        return "SCR001login";
+        groupListService.create(groupListForm);
+        // 遷移先未設定！　要確認！
+        return "redirect:/form";
     }
 }
-
 // http://localhost:8765/GroupList

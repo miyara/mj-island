@@ -3,6 +3,7 @@ package com.simantyu_engineer.mjisland.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.simantyu_engineer.mjisland.domain.model.GroupListForm;
 import com.simantyu_engineer.mjisland.domain.model.groupList;
 import com.simantyu_engineer.mjisland.repository.GroupListRepository;
 
@@ -20,8 +21,19 @@ public class GroupListService {
      * 
      * @param groupList ゲーム設定
      */
-    public void create(groupList form) {
-        groupListRepository.save(form);
+    public void create(GroupListForm groupListForm) {
+        groupList groupList = new groupList();
+
+        groupList.setGroup_id(groupListForm.getGroup_id());
+        groupList.setGroup_name(groupListForm.getGroup_name());
+        groupList.setComment(groupListForm.getComment());
+        groupList.setCreate_member_id(groupListForm.getCreate_member_id());
+        groupList.setCreate_user(groupListForm.getCreate_user());
+        groupList.setCreate_datetime(groupListForm.getCreate_datetime());
+        groupList.setUpdate_user(groupListForm.getUpdate_user());
+        groupList.setUpdate_datetime(groupListForm.getUpdate_datetime());
+        
+        groupListRepository.save(groupList);
         
     }
 
