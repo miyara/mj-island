@@ -2,22 +2,18 @@ package com.simantyu_engineer.mjisland.domain.model;
 
 import java.time.LocalDateTime;
 
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Size;
+import jakarta.validation.constraints.Pattern;
 import lombok.Data;
 
 @Data
 public class GroupListForm {
-    @NotBlank(message = "※入力してください")
-    @Size(max = 10, message = "※10文字以内で入力してください")
+    @Pattern(regexp = "^[a-zA-Z0-9]{1,10}$", message = "10文字以内の半角英数字のみで必ず入力してください")
     private String group_id;
     
-    @NotBlank(message = "※入力してください")
-    @Size(max = 20, message = "※20文字以内で入力してください")
+    @Pattern(regexp = "^.{1,20}$", message = "20文字以内で必ず入力してください")
     private String group_name;
     
-    @NotBlank(message = "※入力してください")
-    @Size(max = 100, message = "※100文字以内で入力してください")
+    @Pattern(regexp = "^.{0,100}$", message = "100文字以内で入力してください")
     private String comment;
 
     private String create_member_id;
