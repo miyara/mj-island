@@ -32,7 +32,7 @@ public class GroupListController {
     @PostMapping("/GroupList")
     private String confirm(@Validated @ModelAttribute groupList form, BindingResult result) {
         if (result.hasErrors()) {
-            return "SCR001login";
+            return "SCR013";
         }
 
         service.create(form);

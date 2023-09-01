@@ -3,6 +3,7 @@
 
 <head>
     <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>sample</title>
 
     <!-- <link rel="stylesheet" th:href="@{/css/sanitize.css}" /> タイムリーフ用-->
@@ -12,13 +13,16 @@
 
     <!-- <link rel="stylesheet" th:href="@{/css/template.css}" /> タイムリーフ用-->
     <link rel="stylesheet" href="../static/css/template.css" />
+    <!-- <script th:src="@{/static/js/template.js"}></script> タイムリーフ用-->
+    <script src="../static/js/template.js"></script>
 </head>
 
 <body class="body_template">
     <ul class="list-group">
         <li class="list-group-item flex">
             <!-- <img th:src="@{/material/star.png}" class="star mg-auto"> タイムリーフ用-->
-            <img src="../static/material/star.png" class="star mg-auto">
+            <img id="ster" src="../static/material/star.png" class="star mg-auto" onclick="changeImage()">
+            <img id="ster" th:src="../static/material/star.png" class="star mg-auto" onclick="changeImage()">
             <span class="wd-200px">
                 <div>開催日 yyyy/MM/dd</div>
                 <div><span class="line_wrap1">プレイヤープレイヤープレイヤープレイヤープレイヤー</span></div>
@@ -28,6 +32,9 @@
         </li>
         <li class="list-group-item">A second item</li>
     </ul>
+
+
+
 </body>
 
 </html>

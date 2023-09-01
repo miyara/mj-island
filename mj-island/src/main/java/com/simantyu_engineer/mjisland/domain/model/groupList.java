@@ -1,7 +1,8 @@
 package com.simantyu_engineer.mjisland.domain.model;
 
 import java.time.LocalDateTime;
-import java.util.Date;
+
+import org.hibernate.validator.constraints.Length;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -9,6 +10,8 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Pattern;
 import lombok.Data;
 
 @Data
@@ -17,16 +20,21 @@ import lombok.Data;
 public class groupList {
 
     @Id
+    @NotBlank(message = "入力してください")
+    @Pattern(regexp = "^[a-zA-Z0-9]{1,10}$", message = "文字数は10文字以内で半角英数字のみで入力してください")
     @Column(name = "group_id")
     private String group_id;
 
+    @NotBlank(message = "入力してください")
+    @Length(max = 20, message = "20文字以内で入力してください")
     @Column(name = "group_name")
     private String group_name;
     
+    @NotBlank(message = "入力してください")
+    @Length(max = 100, message = "100文字以内で入力してください")
     @Column(name = "comment")
     private String comment;
 
-    //物理名と論理名が違います！
     @Column(name = "create_member_id")
     private String create_member_id;
 
