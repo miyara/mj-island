@@ -24,7 +24,7 @@ public class GroupListService {
     public void create(GroupListForm groupListForm) {
         groupList groupList = new groupList();
 
-        groupList.setGroup_id(groupListForm.getGroup_id());
+        groupList.setGroupId(groupListForm.getGroupId());
         groupList.setGroup_name(groupListForm.getGroup_name());
         groupList.setComment(groupListForm.getComment());
         groupList.setCreate_member_id(groupListForm.getCreate_member_id());
@@ -36,5 +36,11 @@ public class GroupListService {
         groupListRepository.save(groupList);
         
     }
+
+    //重複チェック
+    public boolean duplicateCheck(String groupIdValue) {
+        return groupListRepository.existsByGroupId(groupIdValue);
+    }
+
 
 }

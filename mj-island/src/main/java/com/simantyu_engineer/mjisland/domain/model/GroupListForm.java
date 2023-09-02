@@ -8,7 +8,7 @@ import lombok.Data;
 @Data
 public class GroupListForm {
     @Pattern(regexp = "^[a-zA-Z0-9]{1,10}$", message = "10文字以内の半角英数字のみで必ず入力してください")
-    private String group_id;
+    private String groupId;
     
     @Pattern(regexp = "^.{1,20}$", message = "20文字以内で必ず入力してください")
     private String group_name;
@@ -30,9 +30,9 @@ public class GroupListForm {
     public groupList test() {
         groupList form = new groupList();
 
-        form.setGroup_id("5678");
-        form.setGroup_name("1234");
-        form.setComment("commnetcommnetcommnetcommnetcommnetcommnet");
+        // form.setGroup_id("5678");
+        // form.setGroup_name("1234");
+        // form.setComment("commnetcommnetcommnetcommnetcommnetcommnet");
         form.setCreate_member_id("p1p2p3p4");
         form.setCreate_user("大濵");
         form.setCreate_datetime(LocalDateTime.now());

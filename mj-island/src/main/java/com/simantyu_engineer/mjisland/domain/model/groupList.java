@@ -6,8 +6,6 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-import jakarta.persistence.Temporal;
-import jakarta.persistence.TemporalType;
 import lombok.Data;
 
 @Data
@@ -18,7 +16,7 @@ public class groupList {
     @Id
     // @Pattern(regexp = "^[a-zA-Z0-9]{1,10}$", message = "文字数は10文字以内で半角英数字のみで入力してください")
     @Column(name = "group_id")
-    private String group_id;
+    private String groupId;
 
     // @NotBlank(message = "入力してください")
     // @Length(max = 20, message = "20文字以内で入力してください")

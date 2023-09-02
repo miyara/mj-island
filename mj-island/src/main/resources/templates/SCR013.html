@@ -27,11 +27,11 @@
 
         <ul class="mg-top-50px">
             <li class="list-group-item mj-list">
-                <div class="text_item">グループID
-                    <span class="error" th:if="${#fields.hasErrors('group_id')}" th:errors="*{group_id}"></span>
+                <div class="text_item">グループID<span class="error" th:text="${message}"></span>
+                    <span class="error" th:if="${#fields.hasErrors('groupId')}" th:errors="*{groupId}"></span>
                 </div>
                 <input class="form-control list_text" type="text" aria-label="default input example"
-                    th:field="*{group_id}">
+                th:field="*{groupId}">
             </li>
             <li class="list-group-item mj-list">
                 <div class="text_item">グループ名
@@ -53,6 +53,7 @@
             <button type="submit" class="btn btn-primary">送信</button>
         </div>
 
+
         <input type="hidden" th:field="*{create_member_id}">
         <input type="hidden" th:field="*{create_user}">
         <input type="hidden" th:field="*{create_datetime}">
@@ -62,6 +63,7 @@
     </form>
 
     <div class="mg-top-50px"></div>
+
 </body>
 
 </html>
