@@ -44,5 +44,4 @@ public class groupList {
     @Column(name = "update_datetime")
     // @Temporal(TemporalType.TIMESTAMP)
     private LocalDateTime update_datetime;
-
 }

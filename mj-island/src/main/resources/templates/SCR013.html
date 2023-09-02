@@ -23,7 +23,7 @@
 
     <a th:href="@{/#}"><img src="/material/return_button.jpg" alt="戻る" class="return_button"></a>
 
-    <form th:action="@{/GroupList}" th:object="${groupListForm}" method="post">
+    <form th:action="@{/GroupRegistration}" th:object="${groupListForm}" method="post">
 
         <ul class="mg-top-50px">
             <li class="list-group-item mj-list">
@@ -33,14 +33,14 @@
                 <input class="form-control list_text" type="text" aria-label="default input example"
                 th:field="*{groupId}">
             </li>
-            <li class="list-group-item mj-list">
+            <li class="list-group-item mj-list mg-top-20px">
                 <div class="text_item">グループ名
                     <span class="error" th:if="${#fields.hasErrors('group_name')}" th:errors="*{group_name}"></span>
                 </div>
                 <input class="form-control list_text" type="text" aria-label="default input example"
                     th:field="*{group_name}">
             </li>
-            <li class="list-group-item mj-list">
+            <li class="list-group-item mj-list mg-top-20px">
                 <div class="text_item">グループ説明
                     <span class="error" th:if="${#fields.hasErrors('comment')}" th:errors="*{comment}"></span>
                 </div>

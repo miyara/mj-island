@@ -1,5 +1,7 @@
 package com.simantyu_engineer.mjisland.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,11 +18,7 @@ public class GroupListService {
     @Autowired
     GroupListRepository groupListRepository;
 
-    /**
-     * ゲーム設定登録
-     * 
-     * @param groupList ゲーム設定
-     */
+    //グループ登録
     public void create(GroupListForm groupListForm) {
         groupList groupList = new groupList();
 
@@ -34,7 +32,6 @@ public class GroupListService {
         groupList.setUpdate_datetime(groupListForm.getUpdate_datetime());
         
         groupListRepository.save(groupList);
-        
     }
 
     //重複チェック
@@ -42,5 +39,8 @@ public class GroupListService {
         return groupListRepository.existsByGroupId(groupIdValue);
     }
 
-
+    //グループ一覧　全件取得
+    public List<groupList> findAllGroupList(){
+        return groupListRepository.findAll();
+    }
 }

@@ -10,7 +10,7 @@ if ($windowinnerWidth <= windowSm) {
 
 var imageToggleState = 1;  // 初期状態は1
 
-function toggleImage() {
+function changeImage() {
     var img = document.getElementById('toggleButton');
     if (imageToggleState === 1) {
         img.src = '/material/star_empty.png';
