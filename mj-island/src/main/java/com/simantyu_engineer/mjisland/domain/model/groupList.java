@@ -14,17 +14,12 @@ import lombok.Data;
 public class groupList {
 
     @Id
-    // @Pattern(regexp = "^[a-zA-Z0-9]{1,10}$", message = "文字数は10文字以内で半角英数字のみで入力してください")
     @Column(name = "group_id")
     private String groupId;
 
-    // @NotBlank(message = "入力してください")
-    // @Length(max = 20, message = "20文字以内で入力してください")
     @Column(name = "group_name")
     private String group_name;
     
-    // @NotBlank(message = "入力してください")
-    // @Length(max = 100, message = "100文字以内で入力してください")
     @Column(name = "comment")
     private String comment;
 

@@ -1,13 +1,13 @@
 package com.simantyu_engineer.mjisland.controller;
 
-import java.util.List;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -29,38 +29,72 @@ public class GroupListController {
     }
 
     /*
-     * グループ一覧画面
+     * グループ登録画面
      */
-    @GetMapping("/GroupList")
-    public String groupListFind(Model model) {
-        List<groupList> groupList =  groupListService.findAllGroupList();
-        model.addAttribute("groupList", groupList);
-        return "SCR014";
+    @GetMapping("/GroupRegistration")
+    public String groupRegistration(@ModelAttribute groupList groupList) {
+        return "SCR013";
     }
+
+    /*
+     * グループ編集画面
+     */
+    @GetMapping("/GroupEdit/{groupId}")
+    public String getById(
+            @PathVariable("groupId") String groupId, Model model) {
+        model.addAttribute("groupListForm", groupListService.findGroupList(groupId));
+        return "SCR013edit";
+    }
+
+    /*
+     * グループ編集画面
+     */
+    // @GetMapping("/GroupEdit/{groupId}")
+    // public String groupEdit(@PathVariable long groupId, @ModelAttribute groupList
+    // groupList) {
+    // groupListService.findGroupList(groupId);
+    // return "SCR013";
+    // }
 
     /*
      * グループ登録画面
      */
-    @GetMapping("/GroupRegistration")
-    public String groupRegistration(Model model) {
-        GroupListForm groupListForm = new GroupListForm();
-        model.addAttribute("groupListForm", groupListForm.test());
-        return "SCR013";
+    // @GetMapping("/GroupRegistration")
+    // public String groupRegistration(@ModelAttribute GroupListForm groupListForm)
+    // {
+    // return "SCR013";
+    // }
+
+    /*
+     * グループ一覧画面
+     */
+    @GetMapping("/GroupList")
+    public String groupListFind(Model model) {
+        model.addAttribute("groupList", groupListService.findAllGroupList());
+        return "SCR014";
     }
+
+    /*
+     * グループ一覧画面 使用不可（原因不明）
+     */
+    // @GetMapping("/GroupList")
+    // public String groupListFind(Model model) {
+    // List<GroupListForm> groupList =
+    // groupListService.changeFormList(groupListService.findAllGroupList()) ;
+    // model.addAttribute("groupList", groupList);
+    // return "SCR014";
+    // }
 
     /*
      * グループ登録実行
      */
     @PostMapping("/GroupRegistration")
-    public String confirm(
-            RedirectAttributes redirectAttributes,
-            @Validated @ModelAttribute
-            GroupListForm groupListForm,
-            BindingResult bindingResult) {
+    public String groupRegistration(
+            @Validated @ModelAttribute GroupListForm groupListForm, BindingResult bindingResult,
+            @Autowired RedirectAttributes redirectAttributes) {
 
         // 重複チェック（groupId）
-        boolean isDuplicate = groupListService.duplicateCheck(groupListForm.getGroupId());
-        if (isDuplicate) {
+        if (groupListService.duplicateCheck(groupListForm.getGroupId())) {
             redirectAttributes.addFlashAttribute("message", "※データは既に存在します、別のIDを入力してください。");
             return "redirect:/GroupRegistration";
         }
@@ -72,6 +106,26 @@ public class GroupListController {
 
         // 登録
         groupListService.create(groupListForm);
+
+        // 遷移先未設定！ 要確認！
+        return "redirect:/form";
+    }
+
+    /*
+     * グループ編集実行
+     */
+    @PostMapping("/GroupEdit")
+    public String groupEdit(
+            @Validated @ModelAttribute GroupListForm groupListForm, BindingResult bindingResult) {
+
+        // 入力チェック
+        if (bindingResult.hasErrors()) {
+            return "SCR013edit";
+        }
+
+        // 登録
+        groupListService.create(groupListForm);
+
         // 遷移先未設定！ 要確認！
         return "redirect:/form";
     }

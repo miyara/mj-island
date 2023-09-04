@@ -31,6 +31,10 @@
     text-align: center;
 }
 
+.text-align-right {
+    text-align: right;
+}
+
 .inline {
     display: inline;
 }
@@ -47,16 +51,19 @@
     display: flex;
 }
 
+/* 文字が溢れたら、溢れた分は非表示 */
 .hidden {
     overflow: hidden;
 }
 
+/* 文字が溢れたら縦のスクロールバーを表示 */
 .scroll-box{
     overflow-x: hidden;
     overflow-y: scroll;
     white-space: nowrap;
 }
 
+/* 1行超えたら　…　を表示する */
 .line_wrap1 {
     overflow: hidden;
     display: -webkit-box;
@@ -64,6 +71,7 @@
     -webkit-line-clamp: 1;
 }
 
+/* 2行超えたら　…　を表示する */
 .line_wrap2 {
     overflow: hidden;
     display: -webkit-box;
@@ -1280,6 +1288,14 @@
 }
 
 /* width */
+
+.wd-25ps {
+    width: 25%;
+}
+
+.wd-30ps {
+    width: 30%;
+}
 
 .wd-1px {
     width: 1px;
