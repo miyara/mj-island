@@ -17,7 +17,6 @@ import com.simantyu_engineer.mjisland.service.GroupListService;
 
 /*
  * groupListService.create(groupListForm);下の遷移先未設定
- * 画面設計書SCR013の編集モード未実装
  */
 @Controller
 public class GroupListController {
@@ -29,10 +28,19 @@ public class GroupListController {
     }
 
     /*
+     * グループ一覧画面
+     */
+    @GetMapping("/GroupList")
+    public String groupListFind(Model model) {
+        model.addAttribute("groupList", groupListService.findAllGroupList());
+        return "SCR014";
+    }
+
+    /*
      * グループ登録画面
      */
     @GetMapping("/GroupRegistration")
-    public String groupRegistration(@ModelAttribute groupList groupList) {
+    public String groupRegistration(@ModelAttribute GroupListForm groupListForm) {
         return "SCR013";
     }
 
@@ -47,51 +55,15 @@ public class GroupListController {
     }
 
     /*
-     * グループ編集画面
-     */
-    // @GetMapping("/GroupEdit/{groupId}")
-    // public String groupEdit(@PathVariable long groupId, @ModelAttribute groupList
-    // groupList) {
-    // groupListService.findGroupList(groupId);
-    // return "SCR013";
-    // }
-
-    /*
-     * グループ登録画面
-     */
-    // @GetMapping("/GroupRegistration")
-    // public String groupRegistration(@ModelAttribute GroupListForm groupListForm)
-    // {
-    // return "SCR013";
-    // }
-
-    /*
-     * グループ一覧画面
-     */
-    @GetMapping("/GroupList")
-    public String groupListFind(Model model) {
-        model.addAttribute("groupList", groupListService.findAllGroupList());
-        return "SCR014";
-    }
-
-    /*
-     * グループ一覧画面 使用不可（原因不明）
-     */
-    // @GetMapping("/GroupList")
-    // public String groupListFind(Model model) {
-    // List<GroupListForm> groupList =
-    // groupListService.changeFormList(groupListService.findAllGroupList()) ;
-    // model.addAttribute("groupList", groupList);
-    // return "SCR014";
-    // }
-
-    /*
      * グループ登録実行
      */
     @PostMapping("/GroupRegistration")
     public String groupRegistration(
             @Validated @ModelAttribute GroupListForm groupListForm, BindingResult bindingResult,
             @Autowired RedirectAttributes redirectAttributes) {
+
+        //groupListForm初期設定　　注意！initialSetting未完成！！
+        groupListForm = groupListForm.initialSetting(groupListForm);
 
         // 重複チェック（groupId）
         if (groupListService.duplicateCheck(groupListForm.getGroupId())) {

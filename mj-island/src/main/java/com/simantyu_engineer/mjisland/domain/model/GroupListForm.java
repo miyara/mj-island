@@ -26,6 +26,21 @@ public class GroupListForm {
 
     private LocalDateTime update_datetime;
 
+    /**
+     * 登録する際の初期設定　！未完成！以下のセッターは前画面から取得する
+     * @return form
+     */
+    public GroupListForm initialSetting(GroupListForm form) {
+        form.setCreate_member_id("p1p2p3p4");
+        form.setCreate_user("大濵");
+        form.setCreate_datetime(LocalDateTime.now());
+        form.setUpdate_user("宮良");
+        form.setUpdate_datetime(LocalDateTime.now());
+        
+        return form;
+    }
+
+
     //  テスト用　本番では使用厳禁
     public groupList test() {
         groupList form = new groupList();
