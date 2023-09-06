@@ -79,6 +79,13 @@
     -webkit-line-clamp: 2;
 }
 
+.table-data {
+    white-space: nowrap; /* テキストの折り返しを禁止 */
+    overflow: hidden; /* オーバーフローしたコンテンツを非表示にする */
+    text-overflow: ellipsis; /* オーバーフローしたテキストを省略記号（...）で表示 */
+    max-width: 100px; /* セルの最大幅を指定（必要に応じて調整） */  
+}
+
 .font-size-1px {
     font-size: 1px;
 }
@@ -1289,12 +1296,404 @@
 
 /* width */
 
+.wd-1ps {
+    width: 1%;
+}
+
+.wd-2ps {
+    width: 2%;
+}
+
+.wd-3ps {
+    width: 3%;
+}
+
+.wd-4ps {
+    width: 4%;
+}
+
+.wd-5ps {
+    width: 5%;
+}
+
+.wd-6ps {
+    width: 6%;
+}
+
+.wd-7ps {
+    width: 7%;
+}
+
+.wd-8ps {
+    width: 8%;
+}
+
+.wd-9ps {
+    width: 9%;
+}
+
+.wd-10ps {
+    width: 10%;
+}
+
+.wd-11ps {
+    width: 11%;
+}
+
+.wd-12ps {
+    width: 12%;
+}
+
+.wd-13ps {
+    width: 13%;
+}
+
+.wd-14ps {
+    width: 14%;
+}
+
+.wd-15ps {
+    width: 15%;
+}
+
+.wd-16ps {
+    width: 16%;
+}
+
+.wd-17ps {
+    width: 17%;
+}
+
+.wd-18ps {
+    width: 18%;
+}
+
+.wd-19ps {
+    width: 19%;
+}
+
+.wd-20ps {
+    width: 20%;
+}
+
+.wd-21ps {
+    width: 21%;
+}
+
+.wd-22ps {
+    width: 22%;
+}
+
+.wd-23ps {
+    width: 23%;
+}
+
+.wd-24ps {
+    width: 24%;
+}
+
 .wd-25ps {
     width: 25%;
 }
 
+.wd-26ps {
+    width: 26%;
+}
+
+.wd-27ps {
+    width: 27%;
+}
+
+.wd-28ps {
+    width: 28%;
+}
+
+.wd-29ps {
+    width: 29%;
+}
+
 .wd-30ps {
     width: 30%;
+}
+
+.wd-31ps {
+    width: 31%;
+}
+
+.wd-32ps {
+    width: 32%;
+}
+
+.wd-33ps {
+    width: 33%;
+}
+
+.wd-34ps {
+    width: 34%;
+}
+
+.wd-35ps {
+    width: 35%;
+}
+
+.wd-36ps {
+    width: 36%;
+}
+
+.wd-37ps {
+    width: 37%;
+}
+
+.wd-38ps {
+    width: 38%;
+}
+
+.wd-39ps {
+    width: 39%;
+}
+
+.wd-40ps {
+    width: 40%;
+}
+
+.wd-41ps {
+    width: 41%;
+}
+
+.wd-42ps {
+    width: 42%;
+}
+
+.wd-43ps {
+    width: 43%;
+}
+
+.wd-44ps {
+    width: 44%;
+}
+
+.wd-45ps {
+    width: 45%;
+}
+
+.wd-46ps {
+    width: 46%;
+}
+
+.wd-47ps {
+    width: 47%;
+}
+
+.wd-48ps {
+    width: 48%;
+}
+
+.wd-49ps {
+    width: 49%;
+}
+
+.wd-50ps {
+    width: 50%;
+}
+
+.wd-51ps {
+    width: 51%;
+}
+
+.wd-52ps {
+    width: 52%;
+}
+
+.wd-53ps {
+    width: 53%;
+}
+
+.wd-54ps {
+    width: 54%;
+}
+
+.wd-55ps {
+    width: 55%;
+}
+
+.wd-56ps {
+    width: 56%;
+}
+
+.wd-57ps {
+    width: 57%;
+}
+
+.wd-58ps {
+    width: 58%;
+}
+
+.wd-59ps {
+    width: 59%;
+}
+
+.wd-60ps {
+    width: 60%;
+}
+
+.wd-61ps {
+    width: 61%;
+}
+
+.wd-62ps {
+    width: 62%;
+}
+
+.wd-63ps {
+    width: 63%;
+}
+
+.wd-64ps {
+    width: 64%;
+}
+
+.wd-65ps {
+    width: 65%;
+}
+
+.wd-66ps {
+    width: 66%;
+}
+
+.wd-67ps {
+    width: 67%;
+}
+
+.wd-68ps {
+    width: 68%;
+}
+
+.wd-69ps {
+    width: 69%;
+}
+
+.wd-70ps {
+    width: 70%;
+}
+
+.wd-71ps {
+    width: 71%;
+}
+
+.wd-72ps {
+    width: 72%;
+}
+
+.wd-73ps {
+    width: 73%;
+}
+
+.wd-74ps {
+    width: 74%;
+}
+
+.wd-75ps {
+    width: 75%;
+}
+
+.wd-76ps {
+    width: 76%;
+}
+
+.wd-77ps {
+    width: 77%;
+}
+
+.wd-78ps {
+    width: 78%;
+}
+
+.wd-79ps {
+    width: 79%;
+}
+
+.wd-80ps {
+    width: 80%;
+}
+
+.wd-81ps {
+    width: 81%;
+}
+
+.wd-82ps {
+    width: 82%;
+}
+
+.wd-83ps {
+    width: 83%;
+}
+
+.wd-84ps {
+    width: 84%;
+}
+
+.wd-85ps {
+    width: 85%;
+}
+
+.wd-86ps {
+    width: 86%;
+}
+
+.wd-87ps {
+    width: 87%;
+}
+
+.wd-88ps {
+    width: 88%;
+}
+
+.wd-89ps {
+    width: 89%;
+}
+
+.wd-90ps {
+    width: 90%;
+}
+
+.wd-91ps {
+    width: 91%;
+}
+
+.wd-92ps {
+    width: 92%;
+}
+
+.wd-93ps {
+    width: 93%;
+}
+
+.wd-94ps {
+    width: 94%;
+}
+
+.wd-95ps {
+    width: 95%;
+}
+
+.wd-96ps {
+    width: 96%;
+}
+
+.wd-97ps {
+    width: 97%;
+}
+
+.wd-98ps {
+    width: 98%;
+}
+
+.wd-99ps {
+    width: 99%;
+}
+
+.wd-100ps {
+    width: 100%;
 }
 
 .wd-1px {

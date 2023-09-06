@@ -8,10 +8,10 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script th:src="@{/js/template.js}"></script>
     <link th:href="@{/css/sanitize.css}" rel="stylesheet" />
-    <link th:href="@{/css/template.css}" rel="stylesheet" />
-    <link th:href="@{/css/scr003.css}" rel="stylesheet" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <link th:href="@{/css/template.css}" rel="stylesheet" />
+    <link th:href="@{/css/scr003.css}" rel="stylesheet" />
 
 </head>
 
@@ -23,108 +23,44 @@
     <nav class="navbar">
         <a th:href="@{/#}"><img src="/material/return_button.jpg" alt="戻る" class="return_button"></a>
         <div>
-            <a th:href="@{/#}"><img src="/material/sort.png" alt="並び替え" class="return_button"></a>
+                <a th:if="${sort == 'groupId'}" th:href="@{/GroupListSortByGroupName}"><img src="/material/sort.png" alt="並び替え"
+                        class="return_button"></a>
+                <a th:if="${sort == 'groupName'}" th:href="@{/GroupListSortByGroupId}"><img src="/material/sort.png" alt="並び替え"
+                        class="return_button"></a>
             <a th:href="@{/GroupRegistration}"><img src="/material/plus.jpg" alt="登録" class="return_button"></a>
         </div>
     </nav>
 
-    <h2>グループを登録してください</h2>
+    <h4>グループを登録してください</h4>
 
-    <table>
-        <thead>
-            <tr>
-                <th></th>
-                <th>Group ID</th>
-                <th>Group Name</th>
-                <th>Comment</th>
-                <th>Create Member ID</th>
-                <th>Create User</th>
-                <th>Create Date Time</th>
-                <th>Update User</th>
-                <th>Update Date Time</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr th:each="group:${groupList}" th:object="${group}">
-                <td><a th:href="@{/GroupEdit/{groupId}(groupId=*{groupId})}" class="btn btn-primary">編集</a></td>
-                <td th:text="${group.groupId}">Group ID</td>
-                <td th:text="${group.group_name}">Group Name</td>
-                <td th:text="${group.comment}">Comment</td>
-                <td th:text="${group.create_member_id}">Create Member ID</td>
-                <td th:text="${group.create_user}">Create User</td>
-                <td th:text="${group.create_datetime}">Create Date Time</td>
-                <td th:text="${group.update_user}">Update User</td>
-                <td th:text="${group.update_datetime}">Update Date Time</td>
-               
-                
-                <!-- <form th:action="@{/GroupRegistration}" th:object="${groupList}" method="get">
-                    <td th:text="${group.groupId}" class="wd-25ps line_wrap1">Group ID</td>
-                    <td th:text="${group.group_name}" class="wd-30ps line_wrap1">Group Name</td>
-                    <td th:text="${group.comment}" class="line_wrap2">Comment</td>
-                    <td>
-                        <button type="submit" class="btn btn-primary ">編集</button>
+    <div class="mg-top-20px"></div>
+
+    <div style="height:260px; overflow-y:scroll;">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th class="wd-60px"></th>
+                    <th class="wd-70px">ID</th>
+                    <th class="wd-160px">グループ名</th>
+                    <th>コメント</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="group:${listForm}" th:object="${group}">
+                    <td valign="middle">
+                        <a th:href="@{/GroupEdit/{groupId}(groupId=*{groupId})}">
+                            <button class="btn btn-primary wd-60px">編集</button>
+                        </a>
                     </td>
-                </form> -->
-
-                <!-- <td th:text="${group.groupId}" class="wd-25ps line_wrap1">Group ID</td>
-                <td th:text="${group.group_name}" class="wd-30ps line_wrap1">Group Name</td>
-                <td th:text="${group.comment}" class="line_wrap2">Comment</td>
-                <td>
-                    <td>
-                        <form th:action="@{/GroupRegistration}" th:object="${groupList}" method="get">
-                            <button type="submit" class="btn btn-primary ">編集</button>
-                            <input type="hidden" th:value="*{group.groupId}" th:field="*{groupId}">
-                            <input type="hidden" th:value="*{group.group_name}" th:field="*{group_name}">
-                            <input type="hidden" th:value="*{group.comment}" th:field="*{comment}">
-                            <input type="hidden" th:value="*{group.create_member_id}" th:field="*{create_member_id}">
-                            <input type="hidden" th:value="*{group.create_user}" th:field="*{create_user}">
-                            <input type="hidden" th:value="*{group.create_datetime}" th:field="*{create_datetime}">
-                            <input type="hidden" th:value="*{group.update_user}" th:field="*{update_user}">
-                            <input type="hidden" th:value="*{group.update_datetime}" th:field="*{update_datetime}">
-                        </form>
-                    </td> -->
-
-                <!-- <input type="hidden" th:field="*{group.groupId}">
-                        <input type="hidden" th:field="*{group.group_name}">
-                        <input type="hidden" th:field="*{group.comment}">
-                        <input type="hidden" th:field="*{group.create_member_id}">
-                        <input type="hidden" th:field="*{group.create_user}">
-                        <input type="hidden" th:field="*{group.create_datetime}">
-                        <input type="hidden" th:field="*{group.update_user}">
-                        <input type="hidden" th:field="*{group.update_datetime}"> -->
-            </tr>
-        </tbody>
-    </table>
-
-
-
-
-    <table>
-        <thead>
-            <tr>
-                <th>Group ID</th>
-                <th>Group Name</th>
-                <th>Comment</th>
-                <th>Create Member ID</th>
-                <th>Create User</th>
-                <th>Create Date Time</th>
-                <th>Update User</th>
-                <th>Update Date Time</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr th:each="group:${groupList}">
-                <td th:text="${group.groupId}">Group ID</td>
-                <td th:text="${group.group_name}">Group Name</td>
-                <td th:text="${group.comment}">Comment</td>
-                <td th:text="${group.create_member_id}">Create Member ID</td>
-                <td th:text="${group.create_user}">Create User</td>
-                <td th:text="${group.create_datetime}">Create Date Time</td>
-                <td th:text="${group.update_user}">Update User</td>
-                <td th:text="${group.update_datetime}">Update Date Time</td>
-            </tr>
-        </tbody>
-    </table>
+                    <td th:text="${group.groupId}" class="table-data" valign="middle">Group ID</td>
+                    <td th:text="${group.group_name}" class="table-data" valign="middle">Group Name</td>
+                    <td th:text="${group.comment}" class="table-data" valign="middle">
+                        <div class="table-data">Comment</div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 
 </body>
 

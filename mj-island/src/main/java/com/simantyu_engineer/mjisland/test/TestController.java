@@ -11,8 +11,8 @@ import com.simantyu_engineer.mjisland.domain.model.GroupListForm;
 import com.simantyu_engineer.mjisland.domain.model.groupList;
 import com.simantyu_engineer.mjisland.service.GroupListService;
 
-/*
- *test
+/**
+ * test用　自由に使ってどぞ
  */
 @Controller
 public class TestController {

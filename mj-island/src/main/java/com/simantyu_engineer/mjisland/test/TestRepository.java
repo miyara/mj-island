@@ -5,6 +5,9 @@ import org.springframework.stereotype.Repository;
 
 import com.simantyu_engineer.mjisland.domain.model.groupList;
 
+/**
+ * test用　自由に使ってどぞ
+ */
 @Repository
 public interface TestRepository extends JpaRepository <groupList, Long> {
 

@@ -6,6 +6,8 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.persistence.Temporal;
+import jakarta.persistence.TemporalType;
 import lombok.Data;
 
 @Data
@@ -18,7 +20,7 @@ public class groupList {
     private String groupId;
 
     @Column(name = "group_name")
-    private String group_name;
+    private String groupName;
     
     @Column(name = "comment")
     private String comment;
@@ -30,13 +32,13 @@ public class groupList {
     private String create_user;
     
     @Column(name = "create_datetime")
-    // @Temporal(TemporalType.TIMESTAMP)
+    @Temporal(TemporalType.TIMESTAMP)
     private LocalDateTime create_datetime;
     
     @Column(name = "update_user")
     private String update_user;
 
     @Column(name = "update_datetime")
-    // @Temporal(TemporalType.TIMESTAMP)
+    @Temporal(TemporalType.TIMESTAMP)
     private LocalDateTime update_datetime;
 }
