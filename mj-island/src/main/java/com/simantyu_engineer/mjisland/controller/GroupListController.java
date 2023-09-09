@@ -138,4 +138,4 @@ public class GroupListController {
 }
 // http://localhost:8765/GroupListSortByGroupId  グループ一覧画面id順
 // http://localhost:8765/GroupListSortByGroupName  グループ一覧画面name順
-// http://localhost:8765/GroupRegistration  グループ登録実行
+// http://localhost:8765/GroupRegistration  グループ登録

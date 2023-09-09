@@ -26,12 +26,19 @@ public class GroupListService {
         groupListRepository.save(changeEntity(groupListForm));
     }
 
-    // 重複チェック
-    public boolean duplicateCheck(String groupIdValue) {
-        return groupListRepository.existsByGroupId(groupIdValue);
+    /**
+     * グループIDで重複チェック
+     * @param groupId
+     * @return
+     */
+    public boolean duplicateCheck(String groupId) {
+        return groupListRepository.existsByGroupId(groupId);
     }
 
-    // グループ一覧 全件取得
+    /**
+     * グループ一覧 全件取得
+     * @return
+     */
     public List<groupList> findAllGroupList() {
         return groupListRepository.findAll();
     }
@@ -55,7 +62,7 @@ public class GroupListService {
     }
 
     /**
-     * データベースから取得したList<groupList>（ｅｎｔｉｔｙ）をList<GroupListForm2>に変換
+     * データベースから取得したList<groupList>をList<GroupListForm2>に変換
      * @param listGroupList
      * @return
      */

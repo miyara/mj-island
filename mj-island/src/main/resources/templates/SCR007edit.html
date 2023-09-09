@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>グループ編集</title>
+    <title>プレイヤー編集</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script th:src="@{/js/template.js}"></script>
     <link th:href="@{/css/sanitize.css}" rel="stylesheet" />
@@ -23,25 +23,25 @@
 
     <a th:href="@{/#}"><img src="/material/return_button.jpg" alt="戻る" class="return_button"></a>
 
-    <form th:action="@{/GroupEdit}" th:object="${groupListForm}" method="post">
+    <form th:action="@{/PlayerEdit}" th:object="${playerListForm}" method="post">
 
         <ul class="mg-top-50px">
-            <li class="list-group-item mj-list">
-                <div class="text_item">グループID
+            <li class="list-player-item mj-list">
+                <div class="text_item">プレイヤーID
                     <span class="error">編集できません</span>
                 </div>
                 <input class="form-control list_text" type="text" aria-label="default input example"
-                th:field="*{groupId}" style="border: none;" readonly>
+                th:field="*{playerId}" style="border: none;" readonly>
             </li>
-            <li class="list-group-item mj-list mg-top-20px">
-                <div class="text_item">グループ名
-                    <span class="error" th:if="${#fields.hasErrors('group_name')}" th:errors="*{group_name}"></span>
+            <li class="list-player-item mj-list mg-top-20px">
+                <div class="text_item">プレイヤー名
+                    <span class="error" th:if="${#fields.hasErrors('player_name')}" th:errors="*{player_name}"></span>
                 </div>
                 <input class="form-control list_text" type="text" aria-label="default input example"
-                    th:field="*{group_name}">
+                    th:field="*{player_name}">
             </li>
-            <li class="list-group-item mj-list mg-top-20px">
-                <div class="text_item">グループ説明
+            <li class="list-player-item mj-list mg-top-20px">
+                <div class="text_item">プレイヤー説明
                     <span class="error" th:if="${#fields.hasErrors('comment')}" th:errors="*{comment}"></span>
                 </div>
                 <input class="form-control list_memo" type="text" aria-label="default input example"

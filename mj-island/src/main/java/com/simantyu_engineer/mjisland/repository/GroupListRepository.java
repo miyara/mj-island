@@ -7,7 +7,25 @@ import com.simantyu_engineer.mjisland.domain.model.groupList;
 
 @Repository
 public interface GroupListRepository extends JpaRepository <groupList, Long> {
-    boolean existsByGroupId(String groupIdValue);
 
-    public groupList findByGroupId(String GroupId);
+    /**
+     * 重複チェック(groupId)
+     * @param groupIdValue
+     * @return
+     */
+    public boolean existsByGroupId(String groupIdValue);
+
+    /**
+     * 条件検索(groupId)
+     * @param groupId
+     * @return
+     */
+    public groupList findByGroupId(String groupId);
+
+    /**
+     * 条件検索(groupName)
+     * @param groupName
+     * @return
+     */
+    public groupList findByGroupName(String groupName);
 }
