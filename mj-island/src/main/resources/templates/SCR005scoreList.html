@@ -10,6 +10,7 @@
     <link th:href="@{/css/template.css}" rel="stylesheet">
     <link rel="stylesheet" th:href="@{/css/scr003.css}" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="@{/js/template.js}"></script>
 
     <!-- マルチセレクト用js/css-->
     <script src="https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script>
@@ -41,6 +42,7 @@
             <div class="col-5" id="filter-return">
                 <input type="image" th:src="@{/material/return_button.jpg}" alt="戻る" name="return" width="20px"
                     hight="20px">
+                <img th:src="@{/material/star.png}" id="toggleButton" onclick="changeImage()">
             </div>
 
             <div class="col-1" id="filter-favo">
@@ -51,10 +53,10 @@
                 <!-- 参考：https://qiita.com/yoyoyo_pg/items/4859dfbbc512ef653828-->
                 <!-- <select id="playerList" multiple="multiple" style="width:200px;"> -->
                 <select>
-                    <option value="null">===プレイヤーを選択===</option>
-                    <option th:each="item : ${playerList}"
-                            th:value="${item.player_id}"
-                            th:text="${item.player_name}">
+                    <option value="null">===グループを選択===</option>
+                    <option th:each="item : ${groupList}"
+                            th:value="${item.groupId}"
+                            th:text="${item.groupName}">
                         </option>
                 </select>
             </div>
@@ -69,39 +71,9 @@
             </div>
         </div>
 
-        <!-- <div class="row">
-            <div class="col">
-                <table>
-                    <tr th:each="item : ${memberList}">
-                        <td th:text="*{item.member_id}"></td>
-                        <td th:text="*{item.member_mail_address}"></td>
-                        <td th:text="*{item.member_password}"></td>
-                        <td th:text="*{item.del_flg}"></td>
-                        <td th:text="*{item.create_user}"></td>
-                        <td th:text="*{item.create_datetime}"></td>
-                        <td th:text="*{item.update_user}"></td>
-                        <td th:text="*{item.update_datetime}"></td>
-                    </tr>
-                </table>
-            </div>
-        </div> -->
         <br><br>
-        <!-- <ul class="list-group"  th:each="item : ${scoreList}">
-            <li class="list-group-item flex">
-                <input type="hidden" name="scoreId" th:value="${item.score_id}"> 
-                <img th:if="${item.favorite_flg == '1'}" th:src="@{/material/star.png}" class="star mg-15px">
-                <img th:unless="${item.favorite_flg == '1'}" class="star mg-15px">
-                <span class="wd-200px">
-                    <div><span th:text="${item.event_date}"></span></div>
-                    <div><p th:text="${item.group_id}"></p></div>
-                </span>
-                <span class="wd-200px hg-40px font-size-33px" th:text="${item.score_title}" onclick="location.href='/GameSetting'"></span>
-                <span class="resize-none wd-200px line_wrap2" th:text="${item.comment}"></span>
-            </li>
-        </ul> -->
         <ul class="list-group"  th:each="item : ${scoreList}">
             <li class="list-group-item flex">
-                <!-- <a th:href="@{/GameSetting/{scoreId}(scoreId=${item.score_id})}"> -->
                 <input type="hidden" name="scoreId" th:value="${item.score_id}"> 
                 <img th:if="${item.favorite_flg == '1'}" th:src="@{/material/star.png}" class="star mg-auto col-1">
                 <img th:unless="${item.favorite_flg == '1'}" class="mg-auto col-1">
@@ -111,7 +83,6 @@
                 </span>
                 <span class="col-5 hg-40px font-size-33px" th:text="${item.score_title}" onclick="location.href='/GameSetting'"></span>
                 <span class="resize-none col-3 line_wrap2" th:text="${item.comment}"></span>
-                <!-- </a> -->
             </li>
         </ul>
     </div>
