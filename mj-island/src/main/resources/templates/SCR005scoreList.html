@@ -10,7 +10,7 @@
     <link th:href="@{/css/template.css}" rel="stylesheet">
     <link rel="stylesheet" th:href="@{/css/scr003.css}" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-    <script src="@{/js/template.js}"></script>
+    <script th:src="@{/js/template.js}"></script>
 
     <!-- マルチセレクト用js/css-->
     <script src="https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script>
@@ -38,56 +38,66 @@
 
     <!-- フィルター部分-->
     <div class="container" id="filter">
-        <div class="row">
-            <div class="col-5" id="filter-return">
-                <input type="image" th:src="@{/material/return_button.jpg}" alt="戻る" name="return" width="20px"
-                    hight="20px">
-                <img th:src="@{/material/star.png}" id="toggleButton" onclick="changeImage()">
-            </div>
+        <form th:action="@{/ScoreList}" th:object="${scoreListForm}" method="get">
+            <div class="row">
+                <div class="col-4" id="filter-return">
+                    <input type="image" th:src="@{/material/return_button.jpg}" alt="戻る" name="return" width="20px"
+                        hight="20px">
+                </div>
 
-            <div class="col-1" id="filter-favo">
-                <p><button type="button" class="favoButton" value="1">★</button></p>
-            </div>
+                <div class="col-1" id="filter-favo">
+                    <!-- <p><button type="button" class="favoButton" value="1">★</button></p> -->
+                    <img th:src="@{/material/star_empty.png}" class="star" id="toggleButton" onclick="changeImage()">
+                </div>
 
-            <div class="col">
                 <!-- 参考：https://qiita.com/yoyoyo_pg/items/4859dfbbc512ef653828-->
                 <!-- <select id="playerList" multiple="multiple" style="width:200px;"> -->
-                <select>
-                    <option value="null">===グループを選択===</option>
-                    <option th:each="item : ${groupList}"
-                            th:value="${item.groupId}"
-                            th:text="${item.groupName}">
+                <div class="col">
+                    <select th:field="*{groupId}">
+                        <option value="">===グループを選択===</option>
+                        <option th:each="item : ${groupList}" th:value="${item.groupId}" th:text="${item.groupName}">
                         </option>
-                </select>
-            </div>
+                    </select>
+                </div>
 
-            <div class="col" id="filter-eventDateFrom">
-                <label for="eventDateFrom">開催日From</label><br>
-                <input type="date" name="eventDateFrom" id="eventDateFrom">
+                <div class="col" id="filter-eventDateFrom">
+                    <!-- <label for="eventDateFrom">開催日From</label><br> -->
+                    From：<input type="date" th:name="eventDateFrom" id="eventDateFrom" th:field="*{eventDateFrom}"
+                        th:format="${#dates.format(scoreListForm.eventDateFrom, 'yyyy-MM-dd')}">
+                </div>
+                <div class="col" id="filter-eventDateTo">
+                    <!-- <label for="eventDateTo">開催日To</label><br> -->
+                    To：<input type="date" th:name="eventDateTo" id="eventDateTo" th:field="*{eventDateTo}"
+                        th:format="${#dates.format(scoreListForm.eventDateTo, 'yyyy-MM-dd')}">
+                </div>
+
+                <div class="col">
+                    <button type="submit" class="btn btn-primary">検索</button>
+                </div>
             </div>
-            <div class="col" id="filter-eventDateTo">
-                <label for="eventDateTo">開催日To</label><br>
-                <input type="date" name="eventDateTo" id="eventDateTo">
-            </div>
-        </div>
+        </form>
 
         <br><br>
-        <ul class="list-group"  th:each="item : ${scoreList}">
+        <ul class="list-group" th:each="item : ${scoreList}">
             <li class="list-group-item flex">
-                <input type="hidden" name="scoreId" th:value="${item.score_id}"> 
+                <input type="hidden" name="scoreId" th:value="${item.score_id}">
                 <img th:if="${item.favorite_flg == '1'}" th:src="@{/material/star.png}" class="star mg-auto col-1">
                 <img th:unless="${item.favorite_flg == '1'}" class="mg-auto col-1">
                 <span class="col-3">
                     <div><span th:text="${item.event_date}"></span></div>
-                    <div><p th:text="${item.group_id}"></p></div>
+                    <div>
+                        <p th:text="${item.group_name}"></p>
+                    </div>
                 </span>
-                <span class="col-5 hg-40px font-size-33px" th:text="${item.score_title}" onclick="location.href='/GameSetting'"></span>
+                <span class="col-5 hg-40px font-size-33px" th:text="${item.score_title}"
+                    onclick="location.href='/GameSetting'"></span>
                 <span class="resize-none col-3 line_wrap2" th:text="${item.comment}"></span>
             </li>
         </ul>
     </div>
 
-    <script>
+    <!--マルチプルリストの参考スクリプト。お勉強用に残しておく-->
+    <!-- <script>
         $(function () {
             $('select').multipleSelect({
                 width: 200,
@@ -99,9 +109,10 @@
                 }
             });
         });
-    </script>
+    </script> -->
 
 
 
 </body>
+
 </html>
