@@ -59,7 +59,7 @@ public class PlayerListController {
         // モデルに追加
         model.addAttribute("playerForm", playerForm);
 
-        return "SCR007";
+        return "SCR007playerRegistry";
     }// http://localhost:8765/PlayerRegistration
 
     /**
@@ -90,7 +90,7 @@ public class PlayerListController {
 
         // 入力チェック
         if (bindingResult.hasErrors()) {
-            return "SCR007";
+            return "SCR007playerRegistry";
         }
 
         // 登録するためのentityをformから取得
@@ -108,8 +108,8 @@ public class PlayerListController {
         
 
         // 注意！ 遷移先未設定
-        // return "SCR007";
-        return "SCR008";
+        // return "SCR007playerRegistry";
+        return "SCR008playerList";
     }// http://localhost:8765/PlayerRegistration
 
     @GetMapping("/PlayerList")
@@ -121,6 +121,6 @@ public class PlayerListController {
         // モデルに追加
         model.addAttribute("playerListForm", playerListForm);
 
-        return "SCR008";
+        return "SCR008playerList";
     }// http://localhost:8765/PlayerList
 }

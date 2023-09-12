@@ -41,7 +41,7 @@ public class GroupListController {
         listForm = groupListService.changeFormList2(groupListService.getAllGroupListSortedByGroupId());
         model.addAttribute("listForm", listForm);
         model.addAttribute("sort", "groupId");
-        return "SCR014";
+        return "SCR014groupList";
     }
     
     /**
@@ -55,7 +55,7 @@ public class GroupListController {
         listForm = groupListService.changeFormList2(groupListService.getAllGroupListSortedByGroupName());
         model.addAttribute("listForm", listForm);
         model.addAttribute("sort", "groupName");
-        return "SCR014";
+        return "SCR014groupList";
     }
 
     /**
@@ -65,7 +65,7 @@ public class GroupListController {
      */
     @GetMapping("/GroupRegistration")
     public String groupRegistration(@ModelAttribute GroupListForm groupListForm) {
-        return "SCR013";
+        return "SCR013groupRegistry";
     }
 
     /**
@@ -104,7 +104,7 @@ public class GroupListController {
 
         // 入力チェック
         if (bindingResult.hasErrors()) {
-            return "SCR013";
+            return "SCR013groupRegistry";
         }
 
         // 登録

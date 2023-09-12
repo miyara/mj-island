@@ -4,7 +4,7 @@ import jakarta.validation.constraints.Pattern;
 import lombok.Data;
 
 /**
- * SCR013用form
+ * SCR013groupRegistry用form
  */
 @Data
 public class GroupListForm2 {
