@@ -7,9 +7,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.simantyu_engineer.mjisland.domain.model.PlayerForm;
-import com.simantyu_engineer.mjisland.domain.model.groupList;
-import com.simantyu_engineer.mjisland.domain.model.playerInGroup;
+import com.simantyu_engineer.mjisland.domain.model.GroupList;
+import com.simantyu_engineer.mjisland.domain.model.PlayerInGroup;
+import com.simantyu_engineer.mjisland.form.PlayerForm;
 import com.simantyu_engineer.mjisland.repository.GroupListRepository;
 import com.simantyu_engineer.mjisland.repository.PlayerInGroupRepository;
 
@@ -29,7 +29,7 @@ public class PlayerInGroupService {
      * データベースに登録
      * @param playerInGroupList
      */
-    public void createAll(List<playerInGroup> playerInGroupList) {
+    public void createAll(List<PlayerInGroup> playerInGroupList) {
         playerInGroupRepository.saveAll(playerInGroupList);
     }
 
@@ -40,12 +40,12 @@ public class PlayerInGroupService {
      * @param playerInGroups
      * @return
      */
-    public List<playerInGroup> setUp(PlayerForm playerForm, List<String> playerInGroups) {
+    public List<PlayerInGroup> setUp(PlayerForm playerForm, List<String> playerInGroups) {
         
         //必要インスタンスをそれぞれ生成
-        List<playerInGroup> playerInGroupList = new ArrayList<>();
-        playerInGroup playerInGroup = new playerInGroup();
-        groupList groupList = new groupList();
+        List<PlayerInGroup> playerInGroupList = new ArrayList<>();
+        PlayerInGroup playerInGroup = new PlayerInGroup();
+        GroupList groupList = new GroupList();
 
         //登録するためのセット(playerInGroup)
         this.setting(playerInGroup, playerForm);
@@ -64,7 +64,7 @@ public class PlayerInGroupService {
      * playerInGroupを登録するためのセット　！未実装
      * @param playerInGroup
      */
-    public void setting(playerInGroup playerInGroup,PlayerForm playerForm) {
+    public void setting(PlayerInGroup playerInGroup,PlayerForm playerForm) {
         playerInGroup.setPlayerId(playerForm.getPlayerId());
         playerInGroup.setCreate_user("test");
         playerInGroup.setCreate_datetime(LocalDateTime.now());
@@ -77,8 +77,8 @@ public class PlayerInGroupService {
      * @param playerInGroup
      * @return
      */
-    public playerInGroup newInstance(playerInGroup playerInGroup){
-        playerInGroup newPlayerInGroup = new playerInGroup();
+    public PlayerInGroup newInstance(PlayerInGroup playerInGroup){
+        PlayerInGroup newPlayerInGroup = new PlayerInGroup();
         newPlayerInGroup.setGroupId(playerInGroup.getGroupId());
         newPlayerInGroup.setPlayerId(playerInGroup.getPlayerId());
         newPlayerInGroup.setCreate_user(playerInGroup.getCreate_user());

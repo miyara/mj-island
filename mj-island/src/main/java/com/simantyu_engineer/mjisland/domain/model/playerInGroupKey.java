@@ -6,7 +6,7 @@ import lombok.Data;
  * playerInGroupの主キー用
  */
 @Data
-public class playerInGroupKey {
+public class PlayerInGroupKey {
     /**
      * プレイヤーID
      */

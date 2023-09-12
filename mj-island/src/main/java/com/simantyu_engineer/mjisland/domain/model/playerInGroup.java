@@ -14,8 +14,8 @@ import lombok.Data;
 @Data
 @Entity
 @Table(name = "player_in_group")
-@IdClass(value = playerInGroupKey.class)
-public class playerInGroup {
+@IdClass(value = PlayerInGroupKey.class)
+public class PlayerInGroup {
     
     @Id
     @Column(name = "player_id")

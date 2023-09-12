@@ -8,7 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.simantyu_engineer.mjisland.domain.model.gameSetting;
 import com.simantyu_engineer.mjisland.domain.model.memberMst;
-import com.simantyu_engineer.mjisland.domain.model.playerList;
+import com.simantyu_engineer.mjisland.domain.model.PlayerList;
 import com.simantyu_engineer.mjisland.repository.MemberMstRepository;
 import com.simantyu_engineer.mjisland.repository.PlayerListRepository;
 import com.simantyu_engineer.mjisland.repository.GameSettingRepository;
@@ -33,7 +33,7 @@ public class ScoreListService {
     /**
      * プレイヤー一覧 - レコードを全件取得
      */
-    public List<playerList> findAllPlayerList(){
+    public List<PlayerList> findAllPlayerList(){
         return plRepo.findAll();
     }
 

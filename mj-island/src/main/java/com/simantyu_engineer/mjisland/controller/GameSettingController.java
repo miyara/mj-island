@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import com.simantyu_engineer.mjisland.domain.model.GameSettingForm;
+import com.simantyu_engineer.mjisland.form.GameSettingForm;
 import com.simantyu_engineer.mjisland.service.GameSettingService;
 
 

@@ -46,7 +46,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr th:each="group:${listForm}" th:object="${group}">
+                <tr th:each="group : ${listForm}" th:object="${group}">
                     <td valign="middle">
                         <a th:href="@{/GroupEdit/{groupId}(groupId=*{groupId})}">
                             <button class="btn btn-primary wd-60px">編集</button>

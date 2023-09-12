@@ -3,10 +3,10 @@ package com.simantyu_engineer.mjisland.repository;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.simantyu_engineer.mjisland.domain.model.groupList;
+import com.simantyu_engineer.mjisland.domain.model.GroupList;
 
 @Repository
-public interface GroupListRepository extends JpaRepository <groupList, Long> {
+public interface GroupListRepository extends JpaRepository <GroupList, Long> {
 
     /**
      * 重複チェック(groupId)
@@ -20,12 +20,12 @@ public interface GroupListRepository extends JpaRepository <groupList, Long> {
      * @param groupId
      * @return
      */
-    public groupList findByGroupId(String groupId);
+    public GroupList findByGroupId(String groupId);
 
     /**
      * 条件検索(groupName)
      * @param groupName
      * @return
      */
-    public groupList findByGroupName(String groupName);
+    public GroupList findByGroupName(String groupName);
 }

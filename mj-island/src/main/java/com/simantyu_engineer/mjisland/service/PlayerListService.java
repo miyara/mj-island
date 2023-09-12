@@ -8,10 +8,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
-import com.simantyu_engineer.mjisland.domain.model.PlayerForm;
-import com.simantyu_engineer.mjisland.domain.model.groupList;
-import com.simantyu_engineer.mjisland.domain.model.playerInGroup;
-import com.simantyu_engineer.mjisland.domain.model.playerList;
+import com.simantyu_engineer.mjisland.domain.model.GroupList;
+import com.simantyu_engineer.mjisland.domain.model.PlayerInGroup;
+import com.simantyu_engineer.mjisland.domain.model.PlayerList;
+import com.simantyu_engineer.mjisland.form.PlayerForm;
+import com.simantyu_engineer.mjisland.form.PlayerListForm;
 import com.simantyu_engineer.mjisland.repository.GroupListRepository;
 import com.simantyu_engineer.mjisland.repository.PlayerInGroupRepository;
 import com.simantyu_engineer.mjisland.repository.PlayerListRepository;
@@ -34,11 +35,14 @@ public class PlayerListService {
     @Autowired
     PlayerInGroupService playerInGroupService;
     
+    @Autowired
+    GroupListService groupListService;
+    
     /**
      * プレイヤー登録
      * @param playerList
      */
-    public void create(playerList playerList) {
+    public void create(PlayerList playerList) {
         playerListRepository.save(playerList);
     }
  
@@ -55,7 +59,7 @@ public class PlayerListService {
      * プレイヤー一覧 全件取得
      * @return
      */
-    public List<playerList> findAllPlayerList() {
+    public List<PlayerList> findAllPlayerList() {
         return playerListRepository.findAll();
     }
 
@@ -63,7 +67,7 @@ public class PlayerListService {
      * プレイヤー一覧 全件取得(player_name順)
      * @return
      */
-    public List<playerList> getAllPlayerListSortedByPlayerName() {
+    public List<PlayerList> getAllPlayerListSortedByPlayerName() {
         Sort sort = Sort.by(Sort.Order.asc("playerName")); // ソート条件を指定
         return playerListRepository.findAll(sort);
     }
@@ -72,7 +76,7 @@ public class PlayerListService {
      * プレイヤー一覧 全件取得(playerId順)
      * @return
      */
-    public List<playerList> getAllPlayerListSortedByPlayerId() {
+    public List<PlayerList> getAllPlayerListSortedByPlayerId() {
         Sort sort = Sort.by(Sort.Order.asc("playerId")); // ソート条件を指定
         return playerListRepository.findAll(sort);
     }
@@ -80,9 +84,9 @@ public class PlayerListService {
     /**
      * プレイヤーをキー検索（playerId）
      * @param playerId
-     * @return playerList
+     * @return
      */
-    public playerList findPlayerList(String playerId) {
+    public PlayerList findPlayerList(String playerId) {
         return playerListRepository.findByPlayerId(playerId);
     }
 
@@ -92,9 +96,9 @@ public class PlayerListService {
      * @param groupList
      * @return
      */
-    public void setGroupList(PlayerForm playerForm,List<groupList> groupList) {
+    public void setGroupList(PlayerForm playerForm,List<GroupList> groupList) {
         List<String> groupNameList = new ArrayList<>();
-        for(groupList group : groupList) {
+        for(GroupList group : groupList) {
             groupNameList.add(group.getGroupName());
         }
         playerForm.setPlayerInGroup(groupNameList);
@@ -105,7 +109,7 @@ public class PlayerListService {
      * @param List
      * @return
      */
-    public void setUp(playerList playerList) {
+    public void setUp(PlayerList playerList) {
         playerList.setPlayer_id_name("test");
         playerList.setCreate_member_id("test");
         playerList.setCreate_user("test");
@@ -120,9 +124,9 @@ public class PlayerListService {
      * @param formList
      * @return
      */
-    public List<PlayerForm> changeFormList(List<playerList> listPlayerList) {
+    public List<PlayerForm> changeFormList(List<PlayerList> listPlayerList) {
         List<PlayerForm> formList = new ArrayList<PlayerForm>();
-        for (playerList entity : listPlayerList) {
+        for (PlayerList entity : listPlayerList) {
             PlayerForm form = changeForm(entity); 
             formList.add(form);
         }
@@ -134,8 +138,8 @@ public class PlayerListService {
      * @param playerForm
      * @return
      */
-    public playerList changeEntity(PlayerForm playerForm) {
-        playerList playerList = new playerList();
+    public PlayerList changeEntity(PlayerForm playerForm) {
+        PlayerList playerList = new PlayerList();
         playerList.setPlayerId(playerForm.getPlayerId());
         playerList.setPlayer_name(playerForm.getPlayer_name());
         playerList.setComment(playerForm.getComment());
@@ -147,11 +151,23 @@ public class PlayerListService {
      * @param playerList
      * @return
      */
-    public PlayerForm changeForm(playerList playerList) {
+    public PlayerForm changeForm(PlayerList playerList) {
         PlayerForm playerForm = new PlayerForm();
         playerForm.setPlayerId(playerList.getPlayerId());
         playerForm.setPlayer_name(playerList.getPlayer_name());
         playerForm.setComment(playerList.getComment());
         return playerForm;
+    }
+
+    public List<PlayerListForm> setForm() {
+        List<PlayerListForm> list = new ArrayList<>();
+        PlayerListForm playerListForm = new PlayerListForm();
+        PlayerList playerList = new PlayerList();
+        GroupList groupList = new GroupList();
+        PlayerInGroup playerInGroup = new PlayerInGroup();
+
+        
+        
+        return list;
     }
 }

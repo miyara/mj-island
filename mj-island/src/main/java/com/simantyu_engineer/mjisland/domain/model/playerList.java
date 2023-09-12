@@ -13,7 +13,7 @@ import lombok.Data;
 @Data
 @Entity
 @Table(name="player_list")
-public class playerList {
+public class PlayerList {
     @Id
     @Column(name="player_id")
     private String playerId;

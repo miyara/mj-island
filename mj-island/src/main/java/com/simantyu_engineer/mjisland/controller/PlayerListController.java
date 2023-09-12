@@ -13,10 +13,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.simantyu_engineer.mjisland.domain.model.PlayerForm;
-import com.simantyu_engineer.mjisland.domain.model.groupList;
-import com.simantyu_engineer.mjisland.domain.model.playerInGroup;
-import com.simantyu_engineer.mjisland.domain.model.playerList;
+import com.simantyu_engineer.mjisland.domain.model.GroupList;
+import com.simantyu_engineer.mjisland.domain.model.PlayerInGroup;
+import com.simantyu_engineer.mjisland.domain.model.PlayerList;
+import com.simantyu_engineer.mjisland.form.PlayerForm;
+import com.simantyu_engineer.mjisland.form.PlayerListForm;
 import com.simantyu_engineer.mjisland.service.GroupListService;
 import com.simantyu_engineer.mjisland.service.PlayerInGroupService;
 import com.simantyu_engineer.mjisland.service.PlayerListService;
@@ -33,7 +34,6 @@ public class PlayerListController {
 
     public PlayerListController(
         PlayerListService playerListService, GroupListService groupListService, PlayerInGroupService playerInGroupService) {
-
         this.playerListService = playerListService;
         this.groupListService = groupListService;
         this.playerInGroupService = playerInGroupService;
@@ -51,7 +51,7 @@ public class PlayerListController {
         PlayerForm playerForm = new PlayerForm();
 
         // グループリストをグループ名の順で取得
-        List<groupList> groupList = groupListService.getAllGroupListSortedByGroupName();
+        List<GroupList> groupList = groupListService.getAllGroupListSortedByGroupName();
 
         // グループの名前を、プレイヤーフォームにリストとして取得
         playerListService.setGroupList(playerForm, groupList);
@@ -77,7 +77,7 @@ public class PlayerListController {
             @RequestParam(name = "playerInGroup", required = false) List<String> playerInGroups) {
 
         // グループリストをグループ名の順で取得
-        List<groupList> groupList = groupListService.getAllGroupListSortedByGroupName();
+        List<GroupList> groupList = groupListService.getAllGroupListSortedByGroupName();
 
         // グループの名前を、プレイヤーフォームにリストとして取得
         playerListService.setGroupList(playerForm, groupList);
@@ -94,13 +94,13 @@ public class PlayerListController {
         }
 
         // 登録するためのentityをformから取得
-        playerList playerList = playerListService.changeEntity(playerForm);
+        PlayerList playerList = playerListService.changeEntity(playerForm);
 
         // 登録するためのplayerListをセットアップ
         playerListService.setUp(playerList);
 
         // 登録するためのplayerInGroupをセットアップ
-        List<playerInGroup> playerInGroupList = playerInGroupService.setUp(playerForm, playerInGroups);
+        List<PlayerInGroup> playerInGroupList = playerInGroupService.setUp(playerForm, playerInGroups);
 
         // 登録
         playerListService.create(playerList);
@@ -109,6 +109,18 @@ public class PlayerListController {
 
         // 注意！ 遷移先未設定
         // return "SCR007";
-        return "SCR001login";
+        return "SCR008";
     }// http://localhost:8765/PlayerRegistration
+
+    @GetMapping("/PlayerList")
+    public String playerList(Model model) {
+
+        // フォームをセット
+        List<PlayerListForm> playerListForm = playerListService.setFormList();
+
+        // モデルに追加
+        model.addAttribute("playerListForm", playerListForm);
+
+        return "SCR008";
+    }// http://localhost:8765/PlayerList
 }

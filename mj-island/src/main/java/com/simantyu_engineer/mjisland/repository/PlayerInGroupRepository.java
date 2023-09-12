@@ -3,23 +3,23 @@ package com.simantyu_engineer.mjisland.repository;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.simantyu_engineer.mjisland.domain.model.playerInGroup;
-import com.simantyu_engineer.mjisland.domain.model.playerInGroupKey;
+import com.simantyu_engineer.mjisland.domain.model.PlayerInGroup;
+import com.simantyu_engineer.mjisland.domain.model.PlayerInGroupKey;
 
 @Repository
-public interface PlayerInGroupRepository extends JpaRepository<playerInGroup, playerInGroupKey>{
+public interface PlayerInGroupRepository extends JpaRepository<PlayerInGroup, PlayerInGroupKey>{
 
     /**
      * 条件検索(playerId)
      * @param playerId
      * @return
      */
-    public playerInGroup findByPlayerId(String playerId);
+    public PlayerInGroup findByPlayerId(String playerId);
 
     /**
      * 条件検索(groupId)
      * @param groupId
      * @return
      */
-    public playerInGroup findByGroupId(String groupId);
+    public PlayerInGroup findByGroupId(String groupId);
 }

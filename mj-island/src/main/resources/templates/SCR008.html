@@ -46,11 +46,9 @@
                 </tr>
             </thead>
             <tbody>
-                <tr th:each="player:${listForm}" th:object="${player}">
+                <tr th:each="player : ${listForm}" th:object="${player}">
                     <td valign="middle">
-                        <a th:href="@{/PlayerEdit/{playerId}(playerId=*{playerId})}">
-                            <button class="btn btn-primary wd-60px">編集</button>
-                        </a>
+                        <img th:src="@{/material/star.png}" id="toggleButton" onclick="changeImage()">
                     </td>
                     <td th:text="${player.playerId}" class="table-data" valign="middle">Player ID</td>
                     <td th:text="${player.player_name}" class="table-data" valign="middle">Player Name</td>

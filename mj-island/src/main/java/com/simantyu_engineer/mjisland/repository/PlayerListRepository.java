@@ -3,10 +3,10 @@ package com.simantyu_engineer.mjisland.repository;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.simantyu_engineer.mjisland.domain.model.playerList;
+import com.simantyu_engineer.mjisland.domain.model.PlayerList;
 
 @Repository
-public interface PlayerListRepository extends JpaRepository<playerList, Long>{
+public interface PlayerListRepository extends JpaRepository<PlayerList, Long>{
 
     /**
      * 重複チェック(playerId)
@@ -20,5 +20,5 @@ public interface PlayerListRepository extends JpaRepository<playerList, Long>{
      * @param PlayerIdValue
      * @return
      */
-    public playerList findByPlayerId(String PlayerIdValue);
+    public PlayerList findByPlayerId(String PlayerIdValue);
 }

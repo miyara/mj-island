@@ -1,4 +1,4 @@
-package com.simantyu_engineer.mjisland.domain.model;
+package com.simantyu_engineer.mjisland.form;
 
 import jakarta.validation.constraints.Pattern;
 import lombok.Data;

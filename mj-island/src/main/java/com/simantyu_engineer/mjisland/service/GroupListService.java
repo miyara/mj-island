@@ -4,12 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 import org.springframework.data.domain.Sort;
+import org.springframework.stereotype.Service;
 
-import com.simantyu_engineer.mjisland.domain.model.GroupListForm;
-import com.simantyu_engineer.mjisland.domain.model.GroupListForm2;
-import com.simantyu_engineer.mjisland.domain.model.groupList;
+import com.simantyu_engineer.mjisland.domain.model.GroupList;
+import com.simantyu_engineer.mjisland.form.GroupListForm;
+import com.simantyu_engineer.mjisland.form.GroupListForm2;
 import com.simantyu_engineer.mjisland.repository.GroupListRepository;
 
 import jakarta.transaction.Transactional;
@@ -39,7 +39,7 @@ public class GroupListService {
      * グループ一覧 全件取得
      * @return
      */
-    public List<groupList> findAllGroupList() {
+    public List<GroupList> findAllGroupList() {
         return groupListRepository.findAll();
     }
 
@@ -47,7 +47,7 @@ public class GroupListService {
      * グループ一覧 全件取得(group_name順)
      * @return
      */
-    public List<groupList> getAllGroupListSortedByGroupName() {
+    public List<GroupList> getAllGroupListSortedByGroupName() {
         Sort sort = Sort.by(Sort.Order.asc("groupName")); // ソート条件を指定
         return groupListRepository.findAll(sort);
     }
@@ -56,7 +56,7 @@ public class GroupListService {
      * グループ一覧 全件取得(group_id順)
      * @return
      */
-    public List<groupList> getAllGroupListSortedByGroupId() {
+    public List<GroupList> getAllGroupListSortedByGroupId() {
         Sort sort = Sort.by(Sort.Order.asc("groupId")); // ソート条件を指定
         return groupListRepository.findAll(sort);
     }
@@ -66,9 +66,9 @@ public class GroupListService {
      * @param listGroupList
      * @return
      */
-    public List<GroupListForm2> changeFormList2(List<groupList> listGroupList) {
+    public List<GroupListForm2> changeFormList2(List<GroupList> listGroupList) {
         List<GroupListForm2> listForm = new ArrayList<GroupListForm2>();
-        for (groupList entity : listGroupList) {
+        for (GroupList entity : listGroupList) {
             GroupListForm2 form = changeForm2(entity);
             listForm.add(form);
         }
@@ -81,7 +81,7 @@ public class GroupListService {
     }
 
     // List<groupList>からList<GroupListForm>に変換
-    public List<GroupListForm> changeFormList(List<groupList> listGroupList) {
+    public List<GroupListForm> changeFormList(List<GroupList> listGroupList) {
         List<GroupListForm> listGroupListForm = new ArrayList<GroupListForm>();
         for (GroupListForm groupListForm : listGroupListForm) {
             listGroupListForm.add(groupListForm);
@@ -90,8 +90,8 @@ public class GroupListService {
     }
 
     // GroupListFormからgroupListに入れ替える
-    public groupList changeEntity(GroupListForm groupListForm) {
-        groupList groupList = new groupList();
+    public GroupList changeEntity(GroupListForm groupListForm) {
+        GroupList groupList = new GroupList();
         groupList.setGroupId(groupListForm.getGroupId());
         groupList.setGroupName(groupListForm.getGroup_name());
         groupList.setComment(groupListForm.getComment());
@@ -104,7 +104,7 @@ public class GroupListService {
     }
 
     // groupListからGroupListFormに入れ替える
-    public GroupListForm changeForm(groupList groupList) {
+    public GroupListForm changeForm(GroupList groupList) {
         GroupListForm groupListForm = new GroupListForm();
         groupListForm.setGroupId(groupList.getGroupId());
         groupListForm.setGroup_name(groupList.getGroupName());
@@ -123,7 +123,7 @@ public class GroupListService {
      * @param groupList
      * @return
      */
-    public GroupListForm2 changeForm2(groupList groupList) {
+    public GroupListForm2 changeForm2(GroupList groupList) {
         GroupListForm2 groupListForm = new GroupListForm2();
         groupListForm.setGroupId(groupList.getGroupId());
         groupListForm.setGroup_name(groupList.getGroupName());

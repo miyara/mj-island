@@ -13,7 +13,7 @@ import lombok.Data;
 @Data
 @Entity
 @Table(name = "group_list")
-public class groupList {
+public class GroupList {
 
     @Id
     @Column(name = "group_id")
