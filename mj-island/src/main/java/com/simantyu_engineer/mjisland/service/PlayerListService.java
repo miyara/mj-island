@@ -8,11 +8,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+import com.simantyu_engineer.mjisland.domain.form.PlayerForm;
+import com.simantyu_engineer.mjisland.domain.form.PlayerListForm;
 import com.simantyu_engineer.mjisland.domain.model.GroupList;
 import com.simantyu_engineer.mjisland.domain.model.PlayerInGroup;
 import com.simantyu_engineer.mjisland.domain.model.PlayerList;
-import com.simantyu_engineer.mjisland.form.PlayerForm;
-import com.simantyu_engineer.mjisland.form.PlayerListForm;
 import com.simantyu_engineer.mjisland.repository.GroupListRepository;
 import com.simantyu_engineer.mjisland.repository.PlayerInGroupRepository;
 import com.simantyu_engineer.mjisland.repository.PlayerListRepository;

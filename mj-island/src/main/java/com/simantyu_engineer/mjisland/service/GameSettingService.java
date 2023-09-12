@@ -6,8 +6,8 @@ import java.time.LocalDateTime;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.simantyu_engineer.mjisland.domain.form.GameSettingForm;
 import com.simantyu_engineer.mjisland.domain.model.gameSetting;
-import com.simantyu_engineer.mjisland.form.GameSettingForm;
 import com.simantyu_engineer.mjisland.repository.GameSettingRepository;
 
 import jakarta.transaction.Transactional;

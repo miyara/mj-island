@@ -7,9 +7,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.simantyu_engineer.mjisland.domain.form.PlayerForm;
 import com.simantyu_engineer.mjisland.domain.model.GroupList;
 import com.simantyu_engineer.mjisland.domain.model.PlayerInGroup;
-import com.simantyu_engineer.mjisland.form.PlayerForm;
 import com.simantyu_engineer.mjisland.repository.GroupListRepository;
 import com.simantyu_engineer.mjisland.repository.PlayerInGroupRepository;
 

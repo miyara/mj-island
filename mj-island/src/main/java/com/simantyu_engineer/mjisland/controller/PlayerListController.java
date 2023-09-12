@@ -13,11 +13,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.simantyu_engineer.mjisland.domain.form.PlayerForm;
+import com.simantyu_engineer.mjisland.domain.form.PlayerListForm;
 import com.simantyu_engineer.mjisland.domain.model.GroupList;
 import com.simantyu_engineer.mjisland.domain.model.PlayerInGroup;
 import com.simantyu_engineer.mjisland.domain.model.PlayerList;
-import com.simantyu_engineer.mjisland.form.PlayerForm;
-import com.simantyu_engineer.mjisland.form.PlayerListForm;
 import com.simantyu_engineer.mjisland.service.GroupListService;
 import com.simantyu_engineer.mjisland.service.PlayerInGroupService;
 import com.simantyu_engineer.mjisland.service.PlayerListService;

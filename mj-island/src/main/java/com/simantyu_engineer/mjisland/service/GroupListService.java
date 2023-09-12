@@ -7,9 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+import com.simantyu_engineer.mjisland.domain.form.GroupListForm;
+import com.simantyu_engineer.mjisland.domain.form.GroupListForm2;
 import com.simantyu_engineer.mjisland.domain.model.GroupList;
-import com.simantyu_engineer.mjisland.form.GroupListForm;
-import com.simantyu_engineer.mjisland.form.GroupListForm2;
 import com.simantyu_engineer.mjisland.repository.GroupListRepository;
 
 import jakarta.transaction.Transactional;

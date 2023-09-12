@@ -14,8 +14,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.simantyu_engineer.mjisland.form.GroupListForm;
-import com.simantyu_engineer.mjisland.form.GroupListForm2;
+import com.simantyu_engineer.mjisland.domain.form.GroupListForm;
+import com.simantyu_engineer.mjisland.domain.form.GroupListForm2;
 import com.simantyu_engineer.mjisland.service.GroupListService;
 
 /**
