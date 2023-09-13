@@ -1,5 +1,6 @@
 package com.simantyu_engineer.mjisland.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +10,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -74,7 +76,7 @@ public class PlayerListController {
     public String playerRegistration(
             @Validated @ModelAttribute PlayerForm playerForm, BindingResult bindingResult,
             @Autowired RedirectAttributes redirectAttributes,
-            @RequestParam(name = "playerInGroup", required = false) List<String> playerInGroups) {
+            @RequestParam(name = "playerInGroups", required = false) List<String> playerInGroups) {
 
         // グループリストをグループ名の順で取得
         List<GroupList> groupList = groupListService.getAllGroupListSortedByGroupName();
@@ -108,19 +110,25 @@ public class PlayerListController {
         
 
         // 注意！ 遷移先未設定
-        // return "SCR007playerRegistry";
-        return "SCR008playerList";
+        return "redirect:/PlayerList/playerId";
     }// http://localhost:8765/PlayerRegistration
 
-    @GetMapping("/PlayerList")
-    public String playerList(Model model) {
+    /**
+     * プレイヤーリスト画面
+     * @param sort
+     * @param model
+     * @return
+     */
+    @GetMapping("/PlayerList/{sort}")
+    public String playerList(@PathVariable("sort") String sort, Model model) {
 
         // フォームをセット
-        List<PlayerListForm> playerListForm = playerListService.setFormList();
+        List<PlayerListForm> playerListForm = new ArrayList<>();
+        playerListService.setFormList(playerListForm, sort);
 
         // モデルに追加
         model.addAttribute("playerListForm", playerListForm);
 
         return "SCR008playerList";
-    }// http://localhost:8765/PlayerList
+    }// http://localhost:8765/PlayerList/playerId
 }

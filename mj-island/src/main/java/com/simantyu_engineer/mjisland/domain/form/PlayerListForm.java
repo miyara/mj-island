@@ -25,4 +25,18 @@ public class PlayerListForm {
      * プレイヤーに関するコメント
      */
     private String comment;
+
+    /**
+     * PlayerListFormの新しいインスタンスを生成して返す
+     * @param playerListForm
+     * @return
+     */
+    public PlayerListForm newInstance() {
+        PlayerListForm newPlayerListForm = new PlayerListForm();
+        newPlayerListForm.setPlayerId(this.playerId);
+        newPlayerListForm.setPlayerIdName(this.playerIdName);
+        newPlayerListForm.setPlayerInGroup(this.playerInGroup);
+        newPlayerListForm.setComment(this.comment);
+        return newPlayerListForm;
+    }
 }

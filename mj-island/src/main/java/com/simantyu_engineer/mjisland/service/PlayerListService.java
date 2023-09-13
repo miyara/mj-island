@@ -2,6 +2,7 @@ package com.simantyu_engineer.mjisland.service;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,29 +26,31 @@ public class PlayerListService {
 
     @Autowired
     PlayerListRepository playerListRepository;
-    
+
     @Autowired
     PlayerInGroupRepository playerInGroupRepository;
 
     @Autowired
     GroupListRepository groupListRepository;
-    
+
     @Autowired
     PlayerInGroupService playerInGroupService;
-    
+
     @Autowired
     GroupListService groupListService;
-    
+
     /**
      * プレイヤー登録
+     * 
      * @param playerList
      */
     public void create(PlayerList playerList) {
         playerListRepository.save(playerList);
     }
- 
+
     /**
      * playerIdの重複チェック
+     * 
      * @param playerId
      * @return
      */
@@ -57,6 +60,7 @@ public class PlayerListService {
 
     /**
      * プレイヤー一覧 全件取得
+     * 
      * @return
      */
     public List<PlayerList> findAllPlayerList() {
@@ -65,6 +69,7 @@ public class PlayerListService {
 
     /**
      * プレイヤー一覧 全件取得(player_name順)
+     * 
      * @return
      */
     public List<PlayerList> getAllPlayerListSortedByPlayerName() {
@@ -74,6 +79,7 @@ public class PlayerListService {
 
     /**
      * プレイヤー一覧 全件取得(playerId順)
+     * 
      * @return
      */
     public List<PlayerList> getAllPlayerListSortedByPlayerId() {
@@ -83,6 +89,7 @@ public class PlayerListService {
 
     /**
      * プレイヤーをキー検索（playerId）
+     * 
      * @param playerId
      * @return
      */
@@ -92,20 +99,22 @@ public class PlayerListService {
 
     /**
      * groupList.groupName(String)をPlayerForm.PlayerInGroup(List<String>)に代入
+     * 
      * @param playerForm
      * @param groupList
      * @return
      */
-    public void setGroupList(PlayerForm playerForm,List<GroupList> groupList) {
+    public void setGroupList(PlayerForm playerForm, List<GroupList> groupList) {
         List<String> groupNameList = new ArrayList<>();
-        for(GroupList group : groupList) {
+        for (GroupList group : groupList) {
             groupNameList.add(group.getGroupName());
         }
         playerForm.setPlayerInGroup(groupNameList);
     }
 
     /**
-     * データベースに登録する際のセットアップ　！テスト段階！
+     * データベースに登録する際のセットアップ ！テスト段階！
+     * 
      * @param List
      * @return
      */
@@ -118,16 +127,16 @@ public class PlayerListService {
         playerList.setUpdate_datetime(LocalDateTime.now());
     }
 
-    
     /**
      * List<playerList>からList<PlayerForm>に変換
+     * 
      * @param formList
      * @return
      */
     public List<PlayerForm> changeFormList(List<PlayerList> listPlayerList) {
         List<PlayerForm> formList = new ArrayList<PlayerForm>();
         for (PlayerList entity : listPlayerList) {
-            PlayerForm form = changeForm(entity); 
+            PlayerForm form = changeForm(entity);
             formList.add(form);
         }
         return formList;
@@ -135,6 +144,7 @@ public class PlayerListService {
 
     /**
      * PlayerFormからplayerListに入れ替える
+     * 
      * @param playerForm
      * @return
      */
@@ -148,6 +158,7 @@ public class PlayerListService {
 
     /**
      * playerListからPlayerFormに入れ替える
+     * 
      * @param playerList
      * @return
      */
@@ -159,15 +170,52 @@ public class PlayerListService {
         return playerForm;
     }
 
-    public List<PlayerListForm> setForm() {
-        List<PlayerListForm> list = new ArrayList<>();
+    /**
+     * SCR008playerListに表示するフォームのセット
+     * 
+     * @param list
+     */
+    public void setFormList(List<PlayerListForm> list, String sort) {
+        // リストに追加するためのインスタンスを生成
         PlayerListForm playerListForm = new PlayerListForm();
-        PlayerList playerList = new PlayerList();
-        GroupList groupList = new GroupList();
-        PlayerInGroup playerInGroup = new PlayerInGroup();
 
+        // 登録されているプレイヤーを全件取得
+        List<PlayerList> PlayerLists = this.findAllPlayerList();
+
+        // ソートがプレイヤーネームならプレイヤーネーム順にプレイヤーリストを並び変える（元はプレイヤーID順）
+        if (sort.equals("playerName")) {
+            Collections.sort(PlayerLists);
+        }
         
-        
-        return list;
+        for (PlayerList playerList : PlayerLists) {
+
+            // プレイヤーの所属するグループIDをリストで取得
+            List<PlayerInGroup> PlayerInGroups = playerInGroupService.findPlayerList(playerList.getPlayerId());
+
+            // プレイヤーが所属するグループ名を、文字列で取得するためのインスタンスを生成
+            StringBuilder sb = new StringBuilder();
+            for (PlayerInGroup playerInGroup : PlayerInGroups) {
+
+                // プレイヤーが所属するグループを取得
+                GroupList groupList = groupListService.findGroupList(playerInGroup.getGroupId());
+
+                // グループ名を取得
+                sb.append(groupList.getGroupName());
+                if (PlayerInGroups.size() == PlayerInGroups.indexOf(playerInGroup) + 1) {
+
+                    // プレイヤーリストから各要素を取得しフォームにセット
+                    playerListForm.setPlayerId(playerList.getPlayerId());
+                    playerListForm.setPlayerIdName(playerList.getPlayer_name() + "(" + playerList.getPlayerId() + ")");
+                    playerListForm.setPlayerInGroup(sb.toString());
+                    playerListForm.setComment(playerList.getComment());
+                    // リストに追加
+                    list.add(playerListForm.newInstance());
+                    break;
+                }
+                // グループ名の後に 、 を追加（最後には付かないようにする）
+                sb.append(",");
+            }
+
+        }
     }
 }

@@ -1,5 +1,7 @@
 package com.simantyu_engineer.mjisland.repository;
 
+import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -14,12 +16,12 @@ public interface PlayerInGroupRepository extends JpaRepository<PlayerInGroup, Pl
      * @param playerId
      * @return
      */
-    public PlayerInGroup findByPlayerId(String playerId);
+    public List<PlayerInGroup> findByPlayerId(String playerId);
 
     /**
      * 条件検索(groupId)
      * @param groupId
      * @return
      */
-    public PlayerInGroup findByGroupId(String groupId);
+    public List<PlayerInGroup> findByGroupId(String groupId);
 }

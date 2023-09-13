@@ -23,10 +23,11 @@
     <nav class="navbar">
         <a th:href="@{/#}"><img src="/material/return_button.jpg" alt="戻る" class="return_button"></a>
         <div>
-                <a th:if="${sort == 'playerId'}" th:href="@{/PlayerListSortByPlayerName}"><img src="/material/sort.png" alt="並び替え"
-                        class="return_button"></a>
-                <a th:if="${sort == 'playerName'}" th:href="@{/PlayerListSortByPlayerId}"><img src="/material/sort.png" alt="並び替え"
-                        class="return_button"></a>
+            
+            <a th:if="${sort == 'playerId'}" th:href="@{/PlayerList/{sort}(sort='playerName')}"><img src="/material/sort.png"
+                alt="並び替え" class="return_button"></a>
+            <a th:if="${sort == 'playerName'}" th:href="@{/PlayerList/{sort}(sort='playerId')}"><img src="/material/sort.png"
+                alt="並び替え" class="return_button"></a>
             <a th:href="@{/PlayerRegistration}"><img src="/material/plus.jpg" alt="登録" class="return_button"></a>
         </div>
     </nav>
@@ -39,20 +40,22 @@
         <table class="table">
             <thead>
                 <tr>
-                    <th class="wd-60px"></th>
+                    <th class="wd-20px"></th>
                     <th class="wd-70px">ID</th>
-                    <th class="wd-160px">プレイヤー名</th>
+                    <th class="wd-120px">プレイヤー名</th>
+                    <th class="wd-200px">所属グループ</th>
                     <th>コメント</th>
                 </tr>
             </thead>
             <tbody>
-                <tr th:each="player : ${listForm}" th:object="${player}">
+                <tr th:each="playerList : ${playerListForm}" th:object="${player}">
                     <td valign="middle">
-                        <img th:src="@{/material/star.png}" id="toggleButton" onclick="changeImage()">
+                        <!-- <img th:src="@{/material/star.png}" id="toggleButton" onclick="changeImage()"> -->
                     </td>
-                    <td th:text="${player.playerId}" class="table-data" valign="middle">Player ID</td>
-                    <td th:text="${player.player_name}" class="table-data" valign="middle">Player Name</td>
-                    <td th:text="${player.comment}" class="table-data" valign="middle">
+                    <td th:text="${playerList.playerId}" class="table-data" valign="middle">Player ID</td>
+                    <td th:text="${playerList.playerIdName}" class="table-data" valign="middle">Player ID</td>
+                    <td th:text="${playerList.playerInGroup}" class="table-data" valign="middle">Player Name</td>
+                    <td th:text="${playerList.comment}" class="table-data" valign="middle">
                         <div class="table-data">Comment</div>
                     </td>
                 </tr>

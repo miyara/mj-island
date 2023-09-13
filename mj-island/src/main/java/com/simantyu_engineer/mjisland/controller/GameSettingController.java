@@ -24,21 +24,19 @@ public class GameSettingController {
 
     @GetMapping("/GameSetting")
     private String readForm(Model model) {
-        GameSettingForm form = new GameSettingForm();
-        model.addAttribute("form", form.test());
-        return "SCR004";
+        GameSettingForm gameSettingForm = new GameSettingForm();
+        model.addAttribute("gameSettingForm", gameSettingForm.initialSetting());
+        return "SCR004gameSetting";
     }
 
     @PostMapping("/GameSetting")
-    private String confirm(@Validated @ModelAttribute GameSettingForm form, BindingResult result) {
+    private String confirm(@Validated @ModelAttribute GameSettingForm gameSettingForm, BindingResult result) {
         if (result.hasErrors()) {
-            return "SCR001login";
+            return "SCR004gameSetting";
         }
 
-        service.create(form);
+        service.create(gameSettingForm);
         // ルートパス("/") にリダイレクトします
         return "SCR001login";
-    }
+    }// http://localhost:8765/GameSetting
 }
-
-// http://localhost:8765/GameSetting

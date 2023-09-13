@@ -59,7 +59,7 @@
 
             所属グループ
             <span class="form-check" th:each="groupName : ${playerForm.playerInGroup}">
-                <input class="form-check-input" type="checkbox" th:name="playerInGroup" th:value="${groupName}"
+                <input class="form-check-input" type="checkbox" th:name="playerInGroups" th:value="${groupName}"
                     th:id="${groupName}">
                 <label class="form-check-label" th:for="${groupName}" th:text="${groupName}"></label>
             </span>

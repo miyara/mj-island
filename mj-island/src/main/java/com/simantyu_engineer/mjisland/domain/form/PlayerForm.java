@@ -5,6 +5,9 @@ import java.util.List;
 import jakarta.validation.constraints.Pattern;
 import lombok.Data;
 
+/**
+ * SCR007playerRegistry用フォーム
+ */
 @Data
 public class PlayerForm {
 

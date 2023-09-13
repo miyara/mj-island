@@ -76,8 +76,8 @@ public class GroupListService {
     }
 
     // グループ一覧 1件取得
-    public GroupListForm findGroupList(String groupId) {
-        return changeForm(groupListRepository.findByGroupId(groupId));
+    public GroupList findGroupList(String groupId) {
+        return groupListRepository.findByGroupId(groupId);
     }
 
     // List<groupList>からList<GroupListForm>に変換

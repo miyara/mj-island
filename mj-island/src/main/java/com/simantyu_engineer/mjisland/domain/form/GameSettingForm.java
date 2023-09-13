@@ -29,15 +29,15 @@ public class GameSettingForm {
 
     private Integer score_last_num;
     
-    private String favorite_flg;
+    private String  favorite_flg;
 
     private String  create_user;
 
-    private LocalDateTime    create_datetime;
+    private LocalDateTime create_datetime;
 
     private String  update_user;
 
-    private LocalDateTime    update_datetime;
+    private LocalDateTime update_datetime;
 
 
 

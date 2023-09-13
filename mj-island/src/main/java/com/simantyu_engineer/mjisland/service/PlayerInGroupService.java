@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import com.simantyu_engineer.mjisland.domain.form.PlayerForm;
 import com.simantyu_engineer.mjisland.domain.model.GroupList;
 import com.simantyu_engineer.mjisland.domain.model.PlayerInGroup;
+import com.simantyu_engineer.mjisland.domain.model.PlayerList;
 import com.simantyu_engineer.mjisland.repository.GroupListRepository;
 import com.simantyu_engineer.mjisland.repository.PlayerInGroupRepository;
 
@@ -49,14 +50,17 @@ public class PlayerInGroupService {
 
         //登録するためのセット(playerInGroup)
         this.setting(playerInGroup, playerForm);
-        for(String groupName : playerInGroups) {
-            //プレイヤーが所属するグループ名を検索
+        if(playerInGroups != null) {
+
+            for(String groupName : playerInGroups) {
+                //プレイヤーが所属するグループ名を検索
             groupList = groupListRepository.findByGroupName(groupName);
             //グループIDをplayerInGroupに代入
             playerInGroup.setGroupId(groupList.getGroupId());
             //登録するリストに代入
             playerInGroupList.add(newInstance(playerInGroup));
         }
+    }
         return playerInGroupList;
     }
 
@@ -73,7 +77,7 @@ public class PlayerInGroupService {
     }
 
     /**
-     * インスタンスを新しく生成して返す
+     * 引数のインスタンスを新しく生成して返す
      * @param playerInGroup
      * @return
      */
@@ -86,5 +90,14 @@ public class PlayerInGroupService {
         newPlayerInGroup.setUpdate_user(playerInGroup.getUpdate_user());
         newPlayerInGroup.setUpdate_datetime(playerInGroup.getUpdate_datetime());
         return newPlayerInGroup;
+    }
+
+    /**
+     * PlayerInGroupのリストを取得（playerId順）
+     * @param playerId
+     * @return
+     */
+    public List<PlayerInGroup> findPlayerList(String playerId) {
+        return playerInGroupRepository.findByPlayerId(playerId);
     }
 }
